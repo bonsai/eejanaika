@@ -1,0 +1,246 @@
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --surface-hover: #222;
+  --border: #2a2a2a;
+  --text: #e0e0e0;
+  --text-dim: #888;
+  --accent: #ff9f43;
+  --accent-2: #a29bfe;
+  --danger: #ff6b6b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Hiragino Sans", "Noto Sans JP", -apple-system, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* header */
+header {
+  padding: 1.2rem 1rem 0.8rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+header h1 {
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.8rem;
+}
+.base-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+.base-time input {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+/* main */
+main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+}
+
+.list {
+  list-style: none;
+  padding: 0 0.8rem;
+}
+
+/* row */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 0.6rem;
+  background: var(--surface);
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  touch-action: manipulation;
+  transition: transform 0.1s, box-shadow 0.15s;
+}
+.row.sortable-ghost {
+  opacity: 0.35;
+  background: var(--accent);
+}
+.row.sortable-drag {
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+/* drag handle */
+.handle {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  cursor: grab;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+.handle span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+}
+.handle:active { cursor: grabbing; }
+
+/* time */
+.time {
+  width: 62px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* name */
+.name {
+  flex: 1;
+  font-size: 1.05rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: border-color 0.15s;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.name:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--bg);
+}
+
+/* duration */
+.dur-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+}
+.dur {
+  width: 44px;
+  text-align: right;
+  font-size: 0.95rem;
+  padding: 0.2rem 0.3rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--text);
+  font-family: inherit;
+}
+.dur:focus {
+  outline: none;
+  border-color: var(--accent-2);
+  background: var(--bg);
+}
+.dur-wrap .unit {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* delete */
+.del {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.2rem;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.del:active {
+  background: rgba(255,107,107,0.15);
+  color: var(--danger);
+}
+
+/* empty row */
+.row.empty .name {
+  color: var(--text-dim);
+  font-style: italic;
+}
+.row.empty .dur {
+  color: var(--text-dim);
+}
+
+/* footer */
+footer {
+  padding: 0.8rem 1rem 1.2rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.add button {
+  width: 100%;
+  padding: 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.add button:active {
+  background: var(--surface-hover);
+}
+.end {
+  margin-top: 0.8rem;
+  font-size: 1rem;
+  color: var(--text-dim);
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.end #endTime {
+  color: var(--text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.hint {
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  color: #555;
+}
+
+/* empty state */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-dim);
+}

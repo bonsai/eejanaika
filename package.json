@@ -1,0 +1,13 @@
+{
+  "name": "eejanaika",
+  "version": "1.0.0",
+  "description": "> なにがでるかな",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "surge . eejanaika.surge.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

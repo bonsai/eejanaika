@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>ええじゃないか — タイムテーブル</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>タイムテーブル</h1>
+      <div class="base-time">
+        <label>開始</label>
+        <input type="time" id="baseTime" value="17:00">
+      </div>
+    </header>
+
+    <main>
+      <ul id="list" class="list"></ul>
+    </main>
+
+    <footer>
+      <div class="add">
+        <button id="addBtn">＋ 追加</button>
+      </div>
+      <div class="end">
+        <span>終了</span>
+        <span id="endTime">--:--</span>
+      </div>
+      <div class="hint">長押しで並べ替え</div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
