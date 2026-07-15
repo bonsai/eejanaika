@@ -2,7 +2,9 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <title>ええじゃないか — タイムテーブル</title>
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
@@ -10,26 +12,25 @@
 <body>
   <div class="app">
     <header>
-      <h1>タイムテーブル</h1>
-      <div class="base-time">
-        <label>開始</label>
-        <input type="time" id="baseTime" value="17:00">
+      <div class="event-banner">
+        <div class="event-title">ええじゃないか</div>
+        <div class="event-date">2026/08/02</div>
       </div>
     </header>
 
     <main>
-      <ul id="list" class="list"></ul>
+      <ul id="list" class="tl-list"></ul>
     </main>
 
     <footer>
-      <div class="add">
-        <button id="addBtn">＋ 追加</button>
+      <div class="footer-row">
+        <div class="end">
+          <span>終了</span>
+          <span id="endTime">--:--</span>
+        </div>
+        <button id="addBtn" class="add-btn">＋</button>
+        <button id="modeBtn" class="mode-btn">編集</button>
       </div>
-      <div class="end">
-        <span>終了</span>
-        <span id="endTime">--:--</span>
-      </div>
-      <div class="hint">長押しで並べ替え</div>
     </footer>
   </div>
 
