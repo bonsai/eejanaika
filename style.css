@@ -77,6 +77,7 @@ main {
   overflow-x: hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  padding: 0.3rem 0;
 }
 main::-webkit-scrollbar { display: none; }
 
@@ -319,3 +320,189 @@ footer {
 }
 .view-mode .mode-btn { border-color: var(--g-trance); color: var(--g-trance); }
 .edit-mode .mode-btn { border-color: var(--g-anime); color: var(--g-anime); }
+
+/* sub pages */
+.sub-page .event-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.back-btn {
+  font-size: 1.2rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 0.2rem 0.4rem;
+  flex-shrink: 0;
+}
+.back-btn:active { color: var(--text); }
+
+/* index page */
+.index-app main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.index-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 0 1rem;
+}
+.index-card {
+  display: block;
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.1s;
+}
+.index-card:active { transform: scale(0.97); }
+.index-card.g-trance { border-left: 4px solid var(--g-trance); }
+.index-card.g-anime { border-left: 4px solid var(--g-anime); }
+.index-card.g-hiphop { border-left: 4px solid var(--g-hiphop); }
+.index-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+.index-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.index-sub {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  margin-top: 0.15rem;
+}
+
+/* equipment page */
+.store-section {
+  margin-bottom: 0.6rem;
+}
+.store-header {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  padding: 0.3rem 0.5rem;
+  background: var(--surface);
+  border-radius: 6px 6px 0 0;
+  border: 1px solid var(--border);
+  border-bottom: none;
+}
+.equip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  padding: 0 0.3rem;
+}
+.equip-card {
+  flex: 1 1 45%;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.3rem 0.4rem;
+  border-left: 3px solid var(--border);
+}
+.equip-card.g-trance { border-left-color: var(--g-trance); }
+.equip-card.g-anime { border-left-color: var(--g-anime); }
+.equip-card.g-hiphop { border-left-color: var(--g-hiphop); }
+.equip-card.g-showa { border-left-color: var(--g-showa); }
+.equip-card.g-other { border-left-color: var(--g-other); }
+.equip-cat {
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.15rem;
+}
+.equip-row {
+  font-size: 0.5rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+.equip-row .equip-key {
+  color: var(--text-dim);
+  margin-right: 0.2rem;
+}
+.equip-row .equip-val.dim { color: var(--text-dim); opacity: 0.5; }
+.equip-row .equip-val.sub { font-size: 0.45rem; color: var(--text-dim); }
+
+/* legend */
+.legend {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.55rem;
+  color: var(--text-dim);
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.dot.g-trance { background: var(--g-trance); }
+.dot.g-anime { background: var(--g-anime); }
+.dot.g-hiphop { background: var(--g-hiphop); }
+.dot.g-showa { background: var(--g-showa); }
+
+/* maps page */
+.map-list {
+  padding: 0 0.5rem;
+}
+.map-card {
+  display: block;
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.7rem;
+  margin-bottom: 0.4rem;
+  border-left: 4px solid var(--border);
+  transition: transform 0.1s;
+}
+.map-card:active { transform: scale(0.98); }
+.map-card.g-trance { border-left-color: var(--g-trance); }
+.map-card.g-anime { border-left-color: var(--g-anime); }
+.map-card.g-hiphop { border-left-color: var(--g-hiphop); }
+.map-card.g-showa { border-left-color: var(--g-showa); }
+.map-card.g-punk { border-left-color: var(--g-punk); }
+.map-card.g-prog { border-left-color: var(--g-prog); }
+.map-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.map-addr {
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  margin: 0.1rem 0;
+}
+.map-go {
+  font-size: 0.6rem;
+  color: var(--g-trance);
+  font-weight: 600;
+}
+.map-route {
+  width: 100%;
+}
+.map-card-full {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+}
+.map-card-full .map-name {
+  color: var(--text);
+}
+.map-card-full .map-go {
+  color: var(--g-prog);
+}

@@ -5,12 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<title>ええじゃないか — タイムテーブル</title>
+<title>ええじゃないか</title>
 <link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 </head>
 <body>
-  <div class="app">
+  <div class="app index-app">
     <header>
       <div class="event-banner">
         <div class="event-title">ええじゃないか</div>
@@ -19,21 +18,32 @@
     </header>
 
     <main>
-      <ul id="list" class="tl-list"></ul>
+      <div class="index-grid">
+        <a href="timetable.html" class="index-card g-trance">
+          <div class="index-icon">⏱</div>
+          <div class="index-label">タイムテーブル</div>
+          <div class="index-sub">スケジュール確認</div>
+        </a>
+        <a href="equipment.html" class="index-card g-anime">
+          <div class="index-icon">🎛</div>
+          <div class="index-label">機材リスト</div>
+          <div class="index-sub">全店舗の機材</div>
+        </a>
+        <a href="maps.html" class="index-card g-hiphop">
+          <div class="index-icon">📍</div>
+          <div class="index-label">店舗マップ</div>
+          <div class="index-sub">5会場の地図</div>
+        </a>
+      </div>
     </main>
 
     <footer>
       <div class="footer-row">
         <div class="end">
-          <span>終了</span>
-          <span id="endTime">--:--</span>
+          <span>17:00 – 22:00</span>
         </div>
-        <button id="addBtn" class="add-btn">＋</button>
-        <button id="modeBtn" class="mode-btn">編集</button>
       </div>
     </footer>
   </div>
-
-  <script src="app.js"></script>
 </body>
 </html>

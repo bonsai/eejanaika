@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>ええじゃないか — タイムテーブル</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+</head>
+<body class="sub-page">
+  <div class="app">
+    <header>
+      <div class="event-banner">
+        <a href="index.html" class="back-btn">←</a>
+        <div class="event-title">タイムテーブル</div>
+        <div class="event-date">2026/08/02</div>
+      </div>
+    </header>
+
+    <main>
+      <ul id="list" class="tl-list"></ul>
+    </main>
+
+    <footer>
+      <div class="footer-row">
+        <div class="end">
+          <span>終了</span>
+          <span id="endTime">--:--</span>
+        </div>
+        <button id="addBtn" class="add-btn">＋</button>
+        <button id="modeBtn" class="mode-btn">編集</button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

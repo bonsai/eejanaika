@@ -1,0 +1,174 @@
+{
+  "stores": [
+    {
+      "name": "渋谷",
+      "equipment": {
+        "dj": {
+          "mixer": "Pioneer DJM-900NXS2",
+          "player": "Pioneer CDJ-3000 x2",
+          "turntable": "Technics SL-1200MK7 x2",
+          "controller": "Pioneer DDJ-1000",
+          "headphone": "Pioneer HDJ-X10 x2"
+        },
+        "speaker": {
+          "main": "JBL VTX A12 x2",
+          "sub": "JBL VTX S25 x1",
+          "monitor": "Yamaha HS8 x2",
+          "stage": "QSC K12.2 x2"
+        },
+        "projector": {
+          "available": true,
+          "model": "Epson EB-L1755U",
+          "screen": "200インチ プロジェクタースクリーン"
+        },
+        "lighting": {
+          "moving": "ADJ Focus Spot 4Z x4",
+          "wash": "Chauvet Colorado 1-Quad Zoom x6",
+          "laser": "Kvant Clubmax 3000 FB4",
+          "controller": "GrandMA3 Light"
+        },
+        "other": {
+          "microphone": "Shure SM58 x4",
+          "stands": "ドラムス throne x2, ギタースタンド x4",
+          "cables": "XLR 10m x8, ジャック 5m x12"
+        }
+      }
+    },
+    {
+      "name": "新宿",
+      "equipment": {
+        "dj": {
+          "mixer": "Allen & Heath XONE:96",
+          "player": "Pioneer CDJ-2000NXS2 x2",
+          "turntable": "Technics SL-1210MK5G x2",
+          "controller": null,
+          "headphone": "Sennheiser HD 25 x2"
+        },
+        "speaker": {
+          "main": "Void Acoustics Arcline 6 x2",
+          "sub": "Void Acoustics Stasys X x1",
+          "monitor": "KRK Rokit 8 G4 x2",
+          "stage": "QSC K10.2 x2"
+        },
+        "projector": {
+          "available": true,
+          "model": "Panasonic PT-RZ990",
+          "screen": "150インチ フレームレススクリーン"
+        },
+        "lighting": {
+          "moving": "Robe BMFL Spot x2",
+          "wash": "Martin MAC Aura XB x4",
+          "laser": null,
+          "controller": "Avolites Titan One"
+        },
+        "other": {
+          "microphone": "Shure SM57 x2, SM58 x2",
+          "stands": "ドラムス throne x1, ギタースタンド x6",
+          "cables": "XLR 15m x6, ジャック 3m x8"
+        }
+      }
+    },
+    {
+      "name": "中目黒",
+      "equipment": {
+        "dj": {
+          "mixer": "Pioneer DJM-750MK2",
+          "player": "Pioneer CDJ-2000NXS2 x2",
+          "turntable": null,
+          "controller": "Pioneer DDJ-SX3",
+          "headphone": "Pioneer HDJ-CUE1 x2"
+        },
+        "speaker": {
+          "main": "JBL PRX912 x2",
+          "sub": "JBL PRX918XLF x1",
+          "monitor": "Yamaha HS5 x2",
+          "stage": "QSC K8.2 x2"
+        },
+        "projector": {
+          "available": false,
+          "model": null,
+          "screen": null
+        },
+        "lighting": {
+          "moving": "Chauvet Rogue R1 Wash x4",
+          "wash": "ADJ 32 HEX Panel IP x4",
+          "laser": null,
+          "controller": "DMXking ultraDMX Pro"
+        },
+        "other": {
+          "microphone": "Shure SM58 x3",
+          "stands": "ギタースタンド x4",
+          "cables": "XLR 10m x6, ジャック 5m x8"
+        }
+      }
+    },
+    {
+      "name": "下北沢",
+      "equipment": {
+        "dj": {
+          "mixer": "Pioneer DJM-S11",
+          "player": "Pioneer CDJ-3000 x2",
+          "turntable": "Technics SL-1200MK7 x2",
+          "controller": null,
+          "headphone": "Audio-Technica ATH-M50x x2"
+        },
+        "speaker": {
+          "main": "QSC KS118 x2",
+          "sub": null,
+          "monitor": "Yamaha HS8 x2",
+          "stage": "JBL EON715 x2"
+        },
+        "projector": {
+          "available": true,
+          "model": "BenQ LU935",
+          "screen": "180インチ エレベータースクリーン"
+        },
+        "lighting": {
+          "moving": "ADJ Focus Spot 4Z x2",
+          "wash": "Chauvet Colorado 1-Quad Zoom x4",
+          "laser": "Kvant Spectrum 30",
+          "controller": "GrandMA3 onPC"
+        },
+        "other": {
+          "microphone": "Shure SM58 x4, SM57 x2",
+          "stands": "ドラムス throne x2, マイクスタンド x4",
+          "cables": "XLR 12m x10, ジャック 5m x10"
+        }
+      }
+    },
+    {
+      "name": "吉祥寺",
+      "equipment": {
+        "dj": {
+          "mixer": "Pioneer DJM-900NXS2",
+          "player": "Pioneer CDJ-3000 x2",
+          "turntable": "Technics SL-1200GR x2",
+          "controller": "Pioneer DDJ-FLX10",
+          "headphone": "Pioneer HDJ-X10 x2"
+        },
+        "speaker": {
+          "main": "d&b E12 x2",
+          "sub": "d&b SL-SUB x1",
+          "monitor": "Genelec 8040B x2",
+          "stage": "QSC K12.2 x2"
+        },
+        "projector": {
+          "available": false,
+          "model": null,
+          "screen": null
+        },
+        "lighting": {
+          "moving": "Robe Spiider x4",
+          "wash": "Martin MAC Aura XB x6",
+          "laser": null,
+          "controller": "Avolites Pearl Compact"
+        },
+        "other": {
+          "microphone": "Shure SM58 x4, Beta 58A x2",
+          "stands": "ドラムス throne x2, ギタースタンド x6",
+          "cables": "XLR 10m x8, ジャック 5m x12"
+        }
+      }
+    }
+  ]
+}

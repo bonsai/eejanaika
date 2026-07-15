@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>ええじゃないか — 機材リスト</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="sub-page">
+  <div class="app">
+    <header>
+      <div class="event-banner">
+        <a href="index.html" class="back-btn">←</a>
+        <div class="event-title">機材リスト</div>
+        <div class="event-date">全店舗</div>
+      </div>
+    </header>
+
+    <main id="equipmentList"></main>
+
+    <footer>
+      <div class="footer-row">
+        <div class="legend">
+          <span class="legend-item"><span class="dot g-trance"></span>DJ</span>
+          <span class="legend-item"><span class="dot g-anime"></span>スピーカー</span>
+          <span class="legend-item"><span class="dot g-hiphop"></span>プロジェクター</span>
+          <span class="legend-item"><span class="dot g-showa"></span>照明</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    async function init() {
+      const res = await fetch('equipment.json');
+      const data = await res.json();
+      const list = document.getElementById('equipmentList');
+
+      data.stores.forEach(store => {
+        const section = document.createElement('div');
+        section.className = 'store-section';
+
+        const header = document.createElement('div');
+        header.className = 'store-header';
+        header.textContent = store.name;
+        section.appendChild(header);
+
+        const grid = document.createElement('div');
+        grid.className = 'equip-grid';
+
+        const categories = [
+          { key: 'dj', label: 'DJ', cls: 'g-trance', items: store.equipment.dj },
+          { key: 'speaker', label: 'スピーカー', cls: 'g-anime', items: store.equipment.speaker },
+          { key: 'projector', label: 'プロジェクター', cls: 'g-hiphop', items: store.equipment.projector },
+          { key: 'lighting', label: '照明', cls: 'g-showa', items: store.equipment.lighting },
+          { key: 'other', label: 'その他', cls: 'g-other', items: store.equipment.other }
+        ];
+
+        categories.forEach(cat => {
+          if (!cat.items) return;
+          const card = document.createElement('div');
+          card.className = 'equip-card ' + cat.cls;
+
+          const catTitle = document.createElement('div');
+          catTitle.className = 'equip-cat';
+          catTitle.textContent = cat.label;
+          card.appendChild(catTitle);
+
+          if (cat.key === 'projector') {
+            const p = cat.items;
+            if (p.available) {
+              const row = document.createElement('div');
+              row.className = 'equip-row';
+              row.innerHTML = '<span class="equip-val">' + p.model + '</span>';
+              card.appendChild(row);
+              if (p.screen) {
+                const row2 = document.createElement('div');
+                row2.className = 'equip-row';
+                row2.innerHTML = '<span class="equip-val sub">' + p.screen + '</span>';
+                card.appendChild(row2);
+              }
+            } else {
+              const row = document.createElement('div');
+              row.className = 'equip-row';
+              row.innerHTML = '<span class="equip-val dim">なし</span>';
+              card.appendChild(row);
+            }
+          } else {
+            Object.entries(cat.items).forEach(([key, val]) => {
+              if (val === null) return;
+              const row = document.createElement('div');
+              row.className = 'equip-row';
+              row.innerHTML = '<span class="equip-key">' + key + '</span><span class="equip-val">' + val + '</span>';
+              card.appendChild(row);
+            });
+          }
+
+          grid.appendChild(card);
+        });
+
+        section.appendChild(grid);
+        list.appendChild(section);
+      });
+    }
+    init();
+  </script>
+</body>
+</html>
