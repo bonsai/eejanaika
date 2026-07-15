@@ -506,3 +506,79 @@ footer {
 .map-card-full .map-go {
   color: var(--g-prog);
 }
+
+/* sanpo page */
+.sanpo-content {
+  padding: 0 0.5rem;
+}
+.sanpo-info {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+.sanpo-route {
+  font-size: 0.65rem;
+  color: var(--g-showa);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+.sanpo-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.sanpo-row {
+  display: flex;
+  gap: 0.4rem;
+  font-size: 0.6rem;
+}
+.sanpo-label {
+  color: var(--text-dim);
+  flex-shrink: 0;
+  width: 3em;
+}
+.sanpo-val {
+  color: var(--text);
+}
+
+.sanpo-checklist {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+.sanpo-check-title {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  margin-bottom: 0.3rem;
+}
+.sanpo-check {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.6rem;
+  color: var(--text);
+  padding: 0.15rem 0;
+  cursor: pointer;
+}
+.sanpo-check input {
+  width: 12px;
+  height: 12px;
+  accent-color: var(--g-showa);
+}
+.sanpo-check span {
+  flex: 1;
+}
+.sanpo-check input:checked + span {
+  text-decoration: line-through;
+  color: var(--text-dim);
+}
+
+.sanpo-map {
+  margin-bottom: 0.5rem;
+}
