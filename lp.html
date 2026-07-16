@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>ええじゃないか — 2026/08/02</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<style>
+/* LP specific */
+html { scroll-behavior: smooth; }
+.lp-section { padding: 1.2rem 0.8rem; }
+.lp-section + .lp-section { border-top: 1px solid var(--border); }
+.lp-heading {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+/* nav */
+.lp-nav {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0.5rem 0.8rem;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+.lp-nav a {
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.lp-nav a:active { background: var(--border); }
+
+/* hero */
+.lp-hero {
+  text-align: center;
+  padding: 2rem 1rem 1.5rem;
+  background: linear-gradient(180deg, rgba(0,212,255,0.06), transparent);
+}
+.lp-hero-title {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  background: linear-gradient(90deg, var(--g-trance), var(--g-anime), var(--g-hiphop), var(--g-showa));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.3rem;
+}
+.lp-hero-date {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+.lp-hero-sub {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  margin-top: 0.3rem;
+}
+
+/* flyer info */
+.lp-flyer-info {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem;
+}
+.lp-flyer-info h2 {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, var(--g-trance), var(--g-anime));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.lp-flyer-detail {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+.lp-flyer-detail strong { color: var(--text); }
+.lp-artist-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+.lp-artist-tag {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.lp-artist-tag.g-trance { border-color: var(--g-trance); color: var(--g-trance); }
+.lp-artist-tag.g-prog { border-color: var(--g-prog); color: var(--g-prog); }
+.lp-artist-tag.g-anime { border-color: var(--g-anime); color: var(--g-anime); }
+.lp-artist-tag.g-punk { border-color: var(--g-punk); color: var(--g-punk); }
+.lp-artist-tag.g-hiphop { border-color: var(--g-hiphop); color: var(--g-hiphop); }
+.lp-artist-tag.g-showa { border-color: var(--g-showa); color: var(--g-showa); }
+
+/* sanpo */
+.lp-sanpo-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem;
+}
+.lp-sanpo-route {
+  font-size: 0.6rem;
+  color: var(--g-showa);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+.lp-sanpo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.2rem 0.6rem;
+  font-size: 0.55rem;
+}
+.lp-sanpo-label { color: var(--text-dim); }
+.lp-sanpo-val { color: var(--text); }
+
+/* timetable */
+.lp-tl-list {
+  list-style: none;
+  position: relative;
+  padding: 0;
+}
+.lp-tl-list::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--g-trance), var(--g-anime), var(--g-hiphop), var(--g-showa));
+  transform: translateX(-50%);
+  opacity: 0.3;
+}
+.lp-tl-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 48px;
+}
+.lp-tl-item.left { flex-direction: row; }
+.lp-tl-item.right { flex-direction: row-reverse; }
+.lp-tl-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.lp-tl-dot.g-trance { background: var(--g-trance); box-shadow: 0 0 6px var(--g-trance); }
+.lp-tl-dot.g-prog { background: var(--g-prog); box-shadow: 0 0 6px var(--g-prog); }
+.lp-tl-dot.g-anime { background: var(--g-anime); box-shadow: 0 0 6px var(--g-anime); }
+.lp-tl-dot.g-punk { background: var(--g-punk); box-shadow: 0 0 6px var(--g-punk); }
+.lp-tl-dot.g-hiphop { background: var(--g-hiphop); box-shadow: 0 0 6px var(--g-hiphop); }
+.lp-tl-dot.g-showa { background: var(--g-showa); box-shadow: 0 0 6px var(--g-showa); }
+.lp-tl-conn { flex: 1; height: 1px; background: var(--border); }
+.lp-tl-card {
+  flex: 0 0 44%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.2rem 0.4rem;
+}
+.lp-tl-item.left .lp-tl-card {
+  margin-right: 0.8rem;
+  border-left: 3px solid var(--g-other);
+}
+.lp-tl-item.right .lp-tl-card {
+  margin-left: 0.8rem;
+  border-right: 3px solid var(--g-other);
+  text-align: right;
+}
+.lp-tl-item.g-trance .lp-tl-card { border-left-color: var(--g-trance); border-right-color: var(--g-trance); }
+.lp-tl-item.g-prog .lp-tl-card { border-left-color: var(--g-prog); border-right-color: var(--g-prog); }
+.lp-tl-item.g-anime .lp-tl-card { border-left-color: var(--g-anime); border-right-color: var(--g-anime); }
+.lp-tl-item.g-punk .lp-tl-card { border-left-color: var(--g-punk); border-right-color: var(--g-punk); }
+.lp-tl-item.g-hiphop .lp-tl-card { border-left-color: var(--g-hiphop); border-right-color: var(--g-hiphop); }
+.lp-tl-item.g-showa .lp-tl-card { border-left-color: var(--g-showa); border-right-color: var(--g-showa); }
+.lp-tl-time {
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+.lp-tl-name {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.lp-tl-dur {
+  font-size: 0.5rem;
+  color: var(--text-dim);
+}
+.lp-tl-genre {
+  font-size: 0.45rem;
+  font-weight: 600;
+  opacity: 0.6;
+}
+.lp-tl-item.g-trance .lp-tl-genre { color: var(--g-trance); }
+.lp-tl-item.g-prog .lp-tl-genre { color: var(--g-prog); }
+.lp-tl-item.g-anime .lp-tl-genre { color: var(--g-anime); }
+.lp-tl-item.g-punk .lp-tl-genre { color: var(--g-punk); }
+.lp-tl-item.g-hiphop .lp-tl-genre { color: var(--g-hiphop); }
+.lp-tl-item.g-showa .lp-tl-genre { color: var(--g-showa); }
+
+/* equipment */
+.lp-store {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 0.4rem;
+  overflow: hidden;
+}
+.lp-store-name {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.3rem 0.5rem;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--border);
+}
+.lp-store-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.2rem;
+  padding: 0.3rem;
+}
+.lp-equip-cell {
+  font-size: 0.48rem;
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.02);
+  border-left: 2px solid var(--border);
+}
+.lp-equip-cell.g-trance { border-left-color: var(--g-trance); }
+.lp-equip-cell.g-anime { border-left-color: var(--g-anime); }
+.lp-equip-cell.g-hiphop { border-left-color: var(--g-hiphop); }
+.lp-equip-cell.g-showa { border-left-color: var(--g-showa); }
+.lp-equip-cell .eq-cat {
+  font-weight: 700;
+  color: var(--text-dim);
+  display: block;
+  margin-bottom: 0.1rem;
+}
+.lp-equip-cell .eq-val { color: var(--text); }
+.lp-equip-cell .eq-val.dim { color: var(--text-dim); opacity: 0.5; }
+
+/* maps */
+.lp-map-list { display: flex; flex-direction: column; gap: 0.3rem; }
+.lp-map-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.6rem;
+  text-decoration: none;
+  border-left: 3px solid var(--border);
+  transition: transform 0.1s;
+}
+.lp-map-card:active { transform: scale(0.98); }
+.lp-map-card.g-trance { border-left-color: var(--g-trance); }
+.lp-map-card.g-anime { border-left-color: var(--g-anime); }
+.lp-map-card.g-hiphop { border-left-color: var(--g-hiphop); }
+.lp-map-card.g-showa { border-left-color: var(--g-showa); }
+.lp-map-card.g-punk { border-left-color: var(--g-punk); }
+.lp-map-name { font-size: 0.7rem; font-weight: 700; color: var(--text); }
+.lp-map-addr { font-size: 0.5rem; color: var(--text-dim); }
+.lp-map-go { font-size: 0.55rem; color: var(--g-trance); font-weight: 600; }
+
+/* footer */
+.lp-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-top: 1px solid var(--border);
+}
+.lp-footer-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--g-trance), var(--g-anime), var(--g-hiphop), var(--g-showa));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.3rem;
+}
+.lp-footer-sub {
+  font-size: 0.55rem;
+  color: var(--text-dim);
+}
+</style>
+</head>
+<body>
+  <div class="lp">
+    <!-- NAV -->
+    <nav class="lp-nav">
+      <a href="#info">情報</a>
+      <a href="#sanpo">散歩</a>
+      <a href="#timetable">タイムテーブル</a>
+      <a href="#equipment">機材</a>
+      <a href="#maps">地図</a>
+    </nav>
+
+    <!-- HERO -->
+    <div class="lp-hero">
+      <div class="lp-hero-title">ええじゃないか</div>
+      <div class="lp-hero-date">2026年8月2日（日）</div>
+      <div class="lp-hero-sub">16:00 散歩 → 17:00 パーティー開始</div>
+    </div>
+
+    <!-- INFO -->
+    <section id="info" class="lp-section">
+      <div class="lp-heading">EVENT INFO</div>
+      <div class="lp-flyer-info">
+        <h2>オールジャンルダンスパーティー</h2>
+        <div class="lp-flyer-detail">
+          <strong>日時</strong> 2026年8月2日（日）17:00～22:00<br>
+          <strong>入場料</strong> ¥1,000<br>
+          <strong>会場</strong> CAFE doudou<br>
+          神奈川県横浜市神奈川区白楽100-11-103<br>
+          <strong>ジャンル</strong> トランス、パンク、ロック、ヒップホップ、ワールド、グルーブ歌謡、なんでもあり
+        </div>
+        <div class="lp-artist-tags">
+          <span class="lp-artist-tag g-hiphop">はらけん</span>
+          <span class="lp-artist-tag g-prog">おしゃれどろぼう</span>
+          <span class="lp-artist-tag g-trance">アルカ</span>
+          <span class="lp-artist-tag g-anime">あなるちゃん</span>
+          <span class="lp-artist-tag g-trance">トムサック</span>
+          <span class="lp-artist-tag g-punk">オレンジさん</span>
+          <span class="lp-artist-tag g-showa">ムッシュ</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SANPO -->
+    <section id="sanpo" class="lp-section">
+      <div class="lp-heading">白楽散歩 16:00 – 17:00</div>
+      <div class="lp-sanpo-card">
+        <div class="lp-sanpo-route">白楽駅 → まちだ図書館 → 広尾橋 → サイダーバー白楽</div>
+        <div class="lp-sanpo-grid">
+          <div><span class="lp-sanpo-label">集合</span> <span class="lp-sanpo-val">16:00 白楽駅改札前</span></div>
+          <div><span class="lp-sanpo-label">出発</span> <span class="lp-sanpo-val">16:05</span></div>
+          <div><span class="lp-sanpo-label">到着</span> <span class="lp-sanpo-val">17:00 サイダーバー白楽</span></div>
+          <div><span class="lp-sanpo-label">距離</span> <span class="lp-sanpo-val">約2.5km</span></div>
+          <div><span class="lp-sanpo-label">難易度</span> <span class="lp-sanpo-val">★☆☆ 誰でも</span></div>
+          <div><span class="lp-sanpo-label">持ち物</span> <span class="lp-sanpo-val">水分・帽子・日焼け止め</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMETABLE -->
+    <section id="timetable" class="lp-section">
+      <div class="lp-heading">TIMETABLE</div>
+      <div id="lpTimetable"></div>
+    </section>
+
+    <!-- EQUIPMENT -->
+    <section id="equipment" class="lp-section">
+      <div class="lp-heading">EQUIPMENT</div>
+      <div id="lpEquipment"></div>
+    </section>
+
+    <!-- MAPS -->
+    <section id="maps" class="lp-section">
+      <div class="lp-heading">MAPS</div>
+      <div class="lp-map-list">
+        <a href="https://maps.google.com/?q=横浜市神奈川区白楽+CAFE+doudou" class="lp-map-card g-trance" target="_blank">
+          <div><div class="lp-map-name">会場</div><div class="lp-map-addr">CAFE doudou 白楽</div></div>
+          <div class="lp-map-go">→</div>
+        </a>
+        <a href="https://maps.google.com/?q=横浜市神奈川区白楽駅" class="lp-map-card g-showa" target="_blank">
+          <div><div class="lp-map-name">散歩スタート</div><div class="lp-map-addr">白楽駅</div></div>
+          <div class="lp-map-go">→</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="lp-footer">
+      <div class="lp-footer-title">ええじゃないか</div>
+      <div class="lp-footer-sub">2026/08/02 17:00 – 22:00</div>
+    </div>
+  </div>
+
+  <script>
+    async function init() {
+      const [tlRes, eqRes] = await Promise.all([
+        fetch('timetable.json'),
+        fetch('equipment.json')
+      ]);
+      const tlData = await tlRes.json();
+      const eqData = await eqRes.json();
+
+      function genreClass(genre) {
+        const map = {
+          'トランス':'g-trance','プログレ':'g-prog','アニメーション':'g-anime',
+          'パンク':'g-punk','ヒップホップ':'g-hiphop','昭和歌謡':'g-showa'
+        };
+        return map[genre] || 'g-other';
+      }
+      function hmToMin(hm){const[h,m]=hm.split(':').map(Number);return h*60+m}
+      function minToHm(min){const h=Math.floor(min/60)%24;const m=min%60;return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')}
+      function addMin(hm,add){return minToHm(hmToMin(hm)+add)}
+
+      // Timetable
+      const tlEl = document.getElementById('lpTimetable');
+      const list = document.createElement('ul');
+      list.className = 'lp-tl-list';
+      let cursor = tlData.baseTime;
+
+      tlData.items.forEach((item, idx) => {
+        const side = idx % 2 === 0 ? 'left' : 'right';
+        const start = cursor;
+        const end = item.duration != null ? addMin(start, item.duration) : '—';
+        const gc = genreClass(item.genre);
+
+        const li = document.createElement('li');
+        li.className = 'lp-tl-item ' + side + ' ' + gc;
+
+        const dot = document.createElement('div');
+        dot.className = 'lp-tl-dot ' + gc;
+
+        const conn = document.createElement('div');
+        conn.className = 'lp-tl-conn';
+
+        const card = document.createElement('div');
+        card.className = 'lp-tl-card';
+        card.innerHTML =
+          '<div class="lp-tl-time">' + start + ' – ' + end + '</div>' +
+          '<div class="lp-tl-name">' + item.name + '</div>' +
+          '<div class="lp-tl-dur">' + (item.duration != null ? item.duration + '分' : '—') + '</div>' +
+          '<div class="lp-tl-genre">' + (item.genre || '') + '</div>';
+
+        li.append(dot, conn, card);
+        list.appendChild(li);
+
+        if (item.duration != null) cursor = addMin(cursor, item.duration);
+      });
+      tlEl.appendChild(list);
+
+      // Equipment
+      const eqEl = document.getElementById('lpEquipment');
+      eqData.stores.forEach(store => {
+        const sec = document.createElement('div');
+        sec.className = 'lp-store';
+
+        const name = document.createElement('div');
+        name.className = 'lp-store-name';
+        name.textContent = store.name;
+        sec.appendChild(name);
+
+        const grid = document.createElement('div');
+        grid.className = 'lp-store-grid';
+
+        const cats = [
+          {label:'DJ', cls:'g-trance', items:store.equipment.dj},
+          {label:'スピーカー', cls:'g-anime', items:store.equipment.speaker},
+          {label:'プロジェクター', cls:'g-hiphop', items:store.equipment.projector},
+          {label:'照明', cls:'g-showa', items:store.equipment.lighting}
+        ];
+
+        cats.forEach(cat => {
+          const cell = document.createElement('div');
+          cell.className = 'lp-equip-cell ' + cat.cls;
+
+          if (cat.label === 'プロジェクター') {
+            const p = cat.items;
+            cell.innerHTML = '<span class="eq-cat">' + cat.label + '</span>' +
+              '<span class="eq-val' + (p.available ? '' : ' dim') + '">' +
+              (p.available ? p.model : 'なし') + '</span>';
+          } else {
+            let html = '<span class="eq-cat">' + cat.label + '</span>';
+            Object.entries(cat.items).forEach(([k,v]) => {
+              if (v) html += '<span class="eq-val">' + v + '</span><br>';
+            });
+            cell.innerHTML = html;
+          }
+          grid.appendChild(cell);
+        });
+
+        sec.appendChild(grid);
+        eqEl.appendChild(sec);
+      });
+    }
+    init();
+  </script>
+</body>
+</html>
