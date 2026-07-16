@@ -96,26 +96,18 @@ html { scroll-behavior: smooth; }
 }
 .lp-flyer-detail strong { color: var(--text); }
 .lp-artist-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
   margin-top: 0.5rem;
 }
-.lp-artist-tag {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.15rem 0.5rem;
-  font-size: 0.6rem;
-  font-weight: 600;
-  color: var(--text);
+.lp-artist-links {
+  font-size: 0.5rem;
+  color: var(--text-dim);
+  line-height: 1.8;
 }
-.lp-artist-tag.g-trance { border-color: var(--g-trance); color: var(--g-trance); }
-.lp-artist-tag.g-prog { border-color: var(--g-prog); color: var(--g-prog); }
-.lp-artist-tag.g-anime { border-color: var(--g-anime); color: var(--g-anime); }
-.lp-artist-tag.g-punk { border-color: var(--g-punk); color: var(--g-punk); }
-.lp-artist-tag.g-hiphop { border-color: var(--g-hiphop); color: var(--g-hiphop); }
-.lp-artist-tag.g-showa { border-color: var(--g-showa); color: var(--g-showa); }
+.lp-artist-links a {
+  color: var(--g-trance);
+  text-decoration: none;
+}
+.lp-artist-links a:active { text-decoration: underline; }
 
 /* sanpo */
 .lp-sanpo-card {
@@ -349,13 +341,16 @@ html { scroll-behavior: smooth; }
           <strong>ジャンル</strong> トランス、パンク、ロック、ヒップホップ、ワールド、グルーブ歌謡、なんでもあり
         </div>
         <div class="lp-artist-tags">
-          <span class="lp-artist-tag g-hiphop">はらけん</span>
-          <span class="lp-artist-tag g-prog">おしゃれどろぼう</span>
-          <span class="lp-artist-tag g-trance">アルカ</span>
-          <span class="lp-artist-tag g-anime">あなるちゃん</span>
-          <span class="lp-artist-tag g-trance">トムサック</span>
-          <span class="lp-artist-tag g-punk">オレンジさん</span>
-          <span class="lp-artist-tag g-showa">ムッシュ</span>
+          <div class="lp-artist-links">
+            <strong>はらけん</strong><br>
+            <strong>おしゃれどろぼう</strong> <a href="https://www.instagram.com/oshare.dorobous/" target="_blank">Instagram</a><br>
+            <strong>アルカ</strong> <a href="https://www.instagram.com/alka611o/" target="_blank">Instagram</a><br>
+            <strong>あなるちゃん</strong> <a href="https://www.instagram.com/analchan/" target="_blank">Instagram</a><br>
+            <strong>トムサック</strong><br>
+            <strong>オレンジさん</strong> <a href="https://www.instagram.com/orengechanwada/" target="_blank">Instagram</a><br>
+            <strong>ムッシュ</strong> <a href="https://www.instagram.com/bistro_la_zic.yokohama3/" target="_blank">Instagram</a><br>
+            <a href="https://www.instagram.com/musik_drunc/" target="_blank">musik_drunc</a>
+          </div>
         </div>
       </div>
     </section>
