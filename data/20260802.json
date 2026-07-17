@@ -2,11 +2,11 @@
   "baseTime": "17:00",
   "schedule": [
     { "name": "はらけん", "duration": 45, "genre": "ヒップホップ", "instagram": "@musik_drunc" },
-    { "name": "おしゃれどろぼう", "duration": 15, "genre": "プログレ", "instagram": "@oshare.dorobous" },
-    { "name": "アルカ", "duration": 45, "genre": "トランス", "instagram": "@alka611o" },
     { "name": "あなるちゃん", "duration": 45, "genre": "アニメーション", "instagram": "@analchan" },
     { "name": "トムサック", "duration": 60, "genre": "トランス", "instagram": "@tomsuck_jp" },
     { "name": "オレンジさん", "duration": 45, "genre": "パンク", "instagram": "@orengechanwada" },
+    { "name": "アルカ", "duration": 45, "genre": "トランス", "instagram": "@alka611o" },
+    { "name": "おしゃれどろぼう", "duration": 15, "genre": "プログレ", "instagram": "@oshare.dorobous" },
     { "name": "ムッシュ", "duration": 45, "genre": "昭和歌謡", "instagram": "@bistro_la_zic.yokohama3" },
     { "name": "犬八朗", "duration": 30, "genre": "シティポップ", "instagram": "" }
   ]
