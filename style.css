@@ -63,6 +63,11 @@ main::-webkit-scrollbar { display: none; }
 .event-info { text-align: center; padding: 4%; margin-bottom: 4%; background: var(--surface); border-radius: 2%; }
 .event-info h2 { font-size: 1.1rem; color: #00ff88; margin-bottom: 2%; }
 .event-info p { color: var(--text-dim); font-size: 0.85rem; margin: 1% 0; }
+.event-info-main { text-align: center; padding: 5%; margin-bottom: 4%; background: linear-gradient(135deg, var(--surface) 0%, #1a1a2e 100%); border-radius: 3%; border: 1px solid var(--border); }
+.event-info-main h1 { font-size: 1.2rem; font-weight: 800; margin-bottom: 3%; background: linear-gradient(90deg, var(--g-trance), var(--g-anime), var(--g-hiphop), var(--g-showa)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 0.1em; }
+.event-info-main p { color: var(--text); font-size: 0.85rem; margin: 1.5% 0; line-height: 1.6; }
+.event-info-main p strong { color: var(--g-trance); }
+.event-info-main .address { font-size: 0.7rem; color: var(--text-dim); margin-top: 0.5%; }
 .section-title { font-size: 0.95rem; color: #666; margin: 5% 0 3%; text-align: center; }
 
 /* index grid */
@@ -81,6 +86,7 @@ main::-webkit-scrollbar { display: none; }
 
 /* flyer */
 .flyer-page { padding: 0; }
+.flyer-img { width: 100%; border-radius: 2%; margin-bottom: 3%; display: block; }
 .flyer-info { background: var(--surface); border: 1px solid var(--border); border-radius: 2%; padding: 4%; margin-bottom: 3%; }
 .flyer-info h2 { font-size: 1rem; letter-spacing: 0.1em; margin-bottom: 2%; background: linear-gradient(90deg, var(--g-trance), var(--g-anime), var(--g-hiphop), var(--g-showa)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .flyer-detail { font-size: 0.75rem; color: var(--text-dim); line-height: 1.8; }
