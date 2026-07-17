@@ -27,23 +27,10 @@
 
       <section id="page-members" class="page" style="display:none"></section>
 
-      <!-- ========== TIMETABLE (VIEWER + EDITOR) ========== -->
+      <!-- ========== TIMETABLE (VIEWER) ========== -->
       <section id="page-timetable" class="page" style="display:none">
-        <div class="tt-mode-bar">
-          <button id="ttModeView" class="tt-mode-btn active">表示</button>
-          <button id="ttModeEdit" class="tt-mode-btn">編集</button>
-        </div>
-        <div id="ttViewerArea">
-          <ul id="ttList" class="tl-list"></ul>
-          <div class="tt-end" id="ttEndTime"></div>
-        </div>
-        <div id="ttEditorArea" style="display:none">
-          <ul id="edList" class="tl-list"></ul>
-          <div class="tt-footer">
-            <div class="tt-end">終了 <span id="edEndTime">--:--</span></div>
-            <button id="edAddBtn" class="add-btn">＋</button>
-          </div>
-        </div>
+        <ul id="ttList" class="tl-list"></ul>
+        <div class="tt-end" id="ttEndTime"></div>
       </section>
 
       <section id="page-sanpo" class="page" style="display:none"></section>
@@ -202,13 +189,11 @@
     document.getElementById('backBtn').style.display = id==='top' ? 'none' : '';
     document.getElementById('main').scrollTop = 0;
     document.querySelector('title').textContent = ev.title+' - '+title;
-    if (id==='timetable') { renderViewer(); renderEditor(); }
+    if (id==='timetable') { renderViewer(); }
     if (id==='equipment') renderEquipment();
   }
   window.addEventListener('hashchange',()=>navigate(location.hash));
   document.getElementById('backBtn').addEventListener('click',e=>{e.preventDefault();location.hash='#top';});
-  document.getElementById('ttModeView').addEventListener('click',()=>{document.getElementById('ttViewerArea').style.display='';document.getElementById('ttEditorArea').style.display='none';document.getElementById('ttModeView').classList.add('active');document.getElementById('ttModeEdit').classList.remove('active');});
-  document.getElementById('ttModeEdit').addEventListener('click',()=>{document.getElementById('ttEditorArea').style.display='';document.getElementById('ttViewerArea').style.display='none';document.getElementById('ttModeEdit').classList.add('active');document.getElementById('ttModeView').classList.remove('active');});
 
   async function loadTT() {
     try {
@@ -244,38 +229,7 @@
     document.getElementById('ttEndTime').textContent = '終了 '+cursor;
   }
 
-  let edSortable;
-  function renderEditor() {
-    const el = document.getElementById('edList');
-    el.innerHTML = '';
-    let cursor = ttData.baseTime;
-    ttData.items.forEach((item,idx)=>{
-      const side = idx%2===0?'left':'right';
-      const gc = genreClass(item.genre);
-      const st = cursor;
-      const et = item.duration!=null?addMin(st,item.duration):'—';
-      const li = document.createElement('li');
-      li.className = 'tl-item '+side+' '+gc;
-      li.innerHTML = '<div class="tl-dot '+gc+'"></div><div class="tl-conn"></div><div class="tl-card">'
-        +'<div class="tl-time">'+st+' – '+et+'</div>'
-        +'<input class="tl-name" type="text" value="'+item.name+'" spellcheck="false">'
-        +'<div class="tl-dur"><input type="number" value="'+(item.duration!=null?item.duration:'')+'" min="0"><span>分</span></div>'
-        +'<button class="tl-del">&times;</button>'
-        +'</div>';
-      el.appendChild(li);
-      li.querySelector('.tl-name').addEventListener('change',function(){ttData.items[idx].name=this.value||'無名';saveTT();renderEditor();});
-      li.querySelector('.tl-dur input').addEventListener('change',function(){const v=this.value.trim();ttData.items[idx].duration=v===''?null:Math.max(0,parseInt(v,10)||0);saveTT();renderEditor();});
-      li.querySelector('.tl-del').addEventListener('click',()=>{ttData.items.splice(idx,1);saveTT();renderEditor();});
-      if (item.duration!=null) cursor=addMin(cursor,item.duration);
-    });
-    document.getElementById('edEndTime').textContent = cursor;
-    if (edSortable) edSortable.destroy();
-    edSortable = new Sortable(el,{
-      handle:'.tl-card',animation:120,delay:100,delayOnTouchOnly:true,ghostClass:'tl-ghost',dragClass:'tl-drag',
-      onEnd:evt=>{if(evt.oldIndex===evt.newIndex)return;const[m]=ttData.items.splice(evt.oldIndex,1);ttData.items.splice(evt.newIndex,0,m);saveTT();renderEditor();}
-    });
-  }
-  document.getElementById('edAddBtn').addEventListener('click',()=>{ttData.items.push({name:'新規',duration:45,genre:''});saveTT();renderEditor();});
+  function saveTT() { localStorage.setItem(TT_KEY,JSON.stringify(ttData)); }
 
   let eqLoaded = false;
   async function renderEquipment() {
