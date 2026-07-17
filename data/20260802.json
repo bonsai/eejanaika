@@ -1,10 +1,5 @@
 {
-  "event": "ええじゃないか",
-  "date": "2026-08-02",
   "baseTime": "17:00",
-  "endTime": "22:00",
-  "location": "白楽エリア（5会場）",
-  "admission": 1000,
   "schedule": [
     { "name": "はらけん", "duration": 45, "genre": "ヒップホップ", "instagram": "@musik_drunc" },
     { "name": "おしゃれどろぼう", "duration": 15, "genre": "プログレ", "instagram": "@oshare.dorobous" },

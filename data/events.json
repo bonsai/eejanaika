@@ -1,0 +1,95 @@
+{
+  "events": [
+    {
+      "id": "20260802",
+      "file": "data/20260802.json",
+      "title": "ええじゃないか",
+      "date": "2026/08/02",
+      "time": "17:00 – 22:00",
+      "location": "白楽エリア（5会場）",
+      "admission": "¥1,000 (ドリンク別)",
+      "mapUrl": "https://maps.google.com/?q=横浜市神奈川区白楽",
+      "flyerImage": "images/flyer1_web.png",
+      "flyerImageSmall": "images/flyer1_small.png",
+      "flyerNotes": [
+        "ID提示 (20歳以上)",
+        "スニーカー推奨（ダンスイベント）",
+        "キャッシュのみ / 現金持参推奨",
+        "各コーナーで飲食あり"
+      ],
+      "sanpo": {
+        "route": "白楽駅 → まちだ図書館 → 広尾橋 → サイダーバー白楽",
+        "meeting": "16:00 白楽駅改札前",
+        "departure": "16:05",
+        "arrival": "17:00 サイダーバー白楽",
+        "distance": "約2.5km",
+        "difficulty": "★☆☆ 誰でも",
+        "checklist": ["水分（500ml以上）","帽子","日焼け止め","歩きやすい靴","スマートフォン","財布・ICカード"]
+      },
+      "members": [
+        {
+          "name": "トムサック (TOMSUCK)",
+          "genre": "トランス",
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/tomsuck_jp/" },
+            { "label": "Twitter/X", "url": "https://twitter.com/tomsuck" },
+            { "label": "note", "url": "https://note.com/tomsuck" },
+            { "label": "hearthis.at", "url": "https://hearthis.at/tomsuck/" },
+            { "label": "lit.link", "url": "https://lit.link/rArs48z21rVQPVhtu0LxdSOCQX72" }
+          ],
+          "bio": "本籍はトランス、住所はサイケ、グルーヴはハウス、魂はテクノのレイヴ民。元ガバっ子。90年代テクノパーティー「X-TEND」主催。2023年にVRデビュー。"
+        },
+        {
+          "name": "はらけん (haraken)",
+          "genre": "ヒップホップ",
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/musik_drunc/" }
+          ]
+        },
+        {
+          "name": "アルカ (ALKA)",
+          "genre": "トランス",
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/alka611o/" }
+          ]
+        },
+        {
+          "name": "あなるちゃん",
+          "genre": "アニメーション",
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/analchan/" }
+          ]
+        },
+        {
+          "name": "オレンジさん",
+          "genre": "パンク",
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/orengechanwada/" }
+          ]
+        },
+        {
+          "name": "ムッシュ",
+          "genre": "昭和歌謡",
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/bistro_la_zic.yokohama3/" }
+          ]
+        },
+        {
+          "name": "おしゃれどろぼう",
+          "genre": "プログレ",
+          "links": [
+            { "label": "Instagram", "url": "https://www.instagram.com/oshare.dorobous/" }
+          ]
+        }
+      ],
+      "venues": [
+        {
+          "name": "CAFE doudou",
+          "address": "神奈川県横浜市神奈川区白楽100-11-103",
+          "mapUrl": "https://maps.google.com/maps?q=CAFE+doudou+白楽",
+          "equipment": "data/equipment.json"
+        }
+      ]
+    }
+  ]
+}
