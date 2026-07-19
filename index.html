@@ -11,32 +11,59 @@
 <body>
   <div class="app">
     <header>
-      <div class="event-banner">
-        <div class="event-title">ええじゃないか</div>
-        <div class="event-date">2026/08/02 (日) 17:00 – 22:00</div>
+      <div class="header-inner">
+        <button class="mode-toggle" id="modeToggle" title="LP/SPA切替">⤡</button>
+        <div>
+          <div class="event-title">ええじゃないか</div>
+          <div class="event-date">2026/08/02 (日) 17:00 – 22:00</div>
+        </div>
       </div>
     </header>
 
-    <main>
-      <!-- ===== HERO ===== -->
-      <section class="lp-hero">
-        <img class="hero-flyer" src="flyer1.png" alt="フライヤー">
-        <div class="event-info-main">
-          <h1>オールジャンルダンスパーティー</h1>
-          <p><strong>日時</strong> 2026年8月2日（日）17:00開始</p>
-          <p><strong>入場料</strong> ¥1,000（ドリンク別）</p>
-          <p><strong>会場</strong> CAFE doudou</p>
-          <p class="address">神奈川県横浜市神奈川区白楽100-11-103</p>
-          <p><strong>ジャンル</strong> トランス、パンク、ロック、ヒップホップ、ワールド、グルーブ歌謡、なんでもありのダンスパーティー</p>
-        </div>
-      </section>
+    <main id="main">
+      <!-- ========== LP MODE ========== -->
+      <div id="lp-mode">
+        <!-- HERO: flyer + event info + map -->
+        <section class="lp-hero">
+          <img class="hero-flyer" src="flyer1.png" alt="フライヤー">
+          <div class="hero-details">
+            <div class="event-info-main">
+              <h1>オールジャンルダンスパーティー</h1>
+              <p><strong>日時</strong> 2026年8月2日（日）17:00開始</p>
+              <p><strong>入場料</strong> ¥1,000（ドリンク別）</p>
+              <p><strong>会場</strong> CAFE doudou</p>
+              <p class="address">神奈川県横浜市神奈川区白楽100-11-103</p>
+              <p><strong>ジャンル</strong> トランス、パンク、ロック、ヒップホップ、ワールド、グルーブ歌謡、なんでもあり</p>
+            </div>
+            <a href="https://maps.google.com/?q=横浜市神奈川区白楽" class="map-card g-showa" target="_blank">
+              <div class="map-name">周辺地図</div>
+              <div class="map-go">Google Mapsで開く →</div>
+            </a>
+          </div>
+        </section>
 
-      <!-- ===== FLYER DETAIL ===== -->
-      <div class="section-title">
-        <span class="section-marker g-anime"></span> フライヤー
+        <!-- TIMETABLE + MEMBER LINKS -->
+        <div class="section-title">
+          <span class="section-marker g-trance"></span> タイムテーブル
+        </div>
+        <section class="lp-section">
+          <ul id="ttList" class="tl-list"></ul>
+          <div class="tt-end" id="ttEndTime"></div>
+          <div class="member-strip" id="memberStrip"></div>
+        </section>
       </div>
-      <section class="lp-section">
-        <div class="flyer-page">
+
+      <!-- ========== SPA MODE ========== -->
+      <div id="spa-mode" style="display:none">
+        <section id="page-top" class="page">
+          <div class="nav-grid">
+            <a href="#flyer" class="nav-card g-anime"><div class="nav-icon">🎨</div><div class="nav-label">フライヤー</div></a>
+            <a href="#timetable" class="nav-card g-trance"><div class="nav-icon">⏱</div><div class="nav-label">タイムテーブル</div></a>
+            <a href="#members" class="nav-card g-prog"><div class="nav-icon">👥</div><div class="nav-label">メンバー</div></a>
+            <a href="#sanpo" class="nav-card g-showa"><div class="nav-icon">🚶</div><div class="nav-label">白楽散歩</div></a>
+          </div>
+        </section>
+        <section id="page-flyer" class="page" style="display:none">
           <img class="flyer-img" src="flyer2.png" alt="フライヤー2">
           <div class="flyer-info">
             <h2>オールジャンルダンスパーティー</h2>
@@ -57,99 +84,42 @@
               <span class="artist-tag">おしゃれどろぼう</span>
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- ===== TIMETABLE ===== -->
-      <div class="section-title">
-        <span class="section-marker g-trance"></span> タイムテーブル
-      </div>
-      <section class="lp-section" id="section-timetable">
-        <ul id="ttList" class="tl-list"></ul>
-        <div class="tt-end" id="ttEndTime"></div>
-      </section>
-
-      <!-- ===== MEMBERS ===== -->
-      <div class="section-title">
-        <span class="section-marker g-prog"></span> メンバー
-      </div>
-      <section class="lp-section" id="section-members">
-        <div class="members-grid">
-          <div class="member-card">
-            <h2>TOMSUCK</h2>
-            <div class="genre">トランス</div>
-            <a href="https://www.instagram.com/tomsuck_jp/" target="_blank">Instagram: @tomsuck_jp</a>
-            <a href="https://twitter.com/tomsuck" target="_blank">Twitter/X: @tomsuck</a>
-            <a href="https://note.com/tomsuck" target="_blank">note: note.com/tomsuck</a>
-            <a href="https://hearthis.at/tomsuck/" target="_blank">hearthis.at: hearthis.at/tomsuck</a>
-            <a href="https://lit.link/rArs48z21rVQPVhtu0LxdSOCQX72" target="_blank">lit.link</a>
-            <div class="bio">本籍はトランス、住所はサイケ、グルーヴはハウス、魂はテクノのレイヴ民。元ガバっ子。90年代テクノパーティー「X-TEND」主催。2023年にVRデビュー。</div>
-          </div>
-          <div class="member-card">
-            <h2>haraken</h2>
-            <div class="genre">ヒップホップ</div>
-            <a href="https://www.instagram.com/musik_drunc/" target="_blank">Instagram: @musik_drunc</a>
-          </div>
-          <div class="member-card">
-            <h2>ALKA</h2>
-            <div class="genre">トランス</div>
-            <a href="https://www.instagram.com/alka611o/" target="_blank">Instagram: @alka611o</a>
-          </div>
-          <div class="member-card">
-            <h2>あなるちゃん</h2>
-            <div class="genre">アニメーション</div>
-            <a href="https://www.instagram.com/analchan/" target="_blank">Instagram: @analchan</a>
-          </div>
-          <div class="member-card">
-            <h2>オレンジさん</h2>
-            <div class="genre">パンク</div>
-            <a href="https://www.instagram.com/orengechanwada/" target="_blank">Instagram: @orengechanwada</a>
-          </div>
-          <div class="member-card">
-            <h2>ムッシュ</h2>
-            <div class="genre">昭和歌謡</div>
-            <a href="https://www.instagram.com/bistro_la_zic.yokohama3/" target="_blank">Instagram: @bistro_la_zic.yokohama3</a>
-          </div>
-          <div class="member-card">
-            <h2>おしゃれどろぼう</h2>
-            <div class="genre">プログレ</div>
-            <a href="https://www.instagram.com/oshare.dorobous/" target="_blank">Instagram: @oshare.dorobous</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== SANPO ===== -->
-      <div class="section-title">
-        <span class="section-marker g-showa"></span> 白楽散歩
-      </div>
-      <section class="lp-section">
-        <div class="sanpo-content">
-          <div class="sanpo-info">
-            <div class="sanpo-route">白楽駅 → まちだ図書館 → 広尾橋 → サイダーバー白楽</div>
-            <div class="sanpo-detail">
-              <div class="sanpo-row"><span class="sanpo-label">集合</span><span class="sanpo-val">16:00 白楽駅改札前</span></div>
-              <div class="sanpo-row"><span class="sanpo-label">出発</span><span class="sanpo-val">16:05</span></div>
-              <div class="sanpo-row"><span class="sanpo-label">到着</span><span class="sanpo-val">17:00 サイダーバー白楽</span></div>
-              <div class="sanpo-row"><span class="sanpo-label">距離</span><span class="sanpo-val">約2.5km</span></div>
-              <div class="sanpo-row"><span class="sanpo-label">難易度</span><span class="sanpo-val">★☆☆ 誰でも</span></div>
+        </section>
+        <section id="page-timetable" class="page" style="display:none">
+          <ul id="ttListSpa" class="tl-list"></ul>
+          <div class="tt-end" id="ttEndTimeSpa"></div>
+        </section>
+        <section id="page-members" class="page" style="display:none">
+          <div class="members-grid" id="membersGrid"></div>
+        </section>
+        <section id="page-sanpo" class="page" style="display:none">
+          <div class="sanpo-content">
+            <div class="sanpo-info">
+              <div class="sanpo-route">白楽駅 → まちだ図書館 → 広尾橋 → サイダーバー白楽</div>
+              <div class="sanpo-detail">
+                <div class="sanpo-row"><span class="sanpo-label">集合</span><span class="sanpo-val">16:00 白楽駅改札前</span></div>
+                <div class="sanpo-row"><span class="sanpo-label">出発</span><span class="sanpo-val">16:05</span></div>
+                <div class="sanpo-row"><span class="sanpo-label">到着</span><span class="sanpo-val">17:00 サイダーバー白楽</span></div>
+                <div class="sanpo-row"><span class="sanpo-label">距離</span><span class="sanpo-val">約2.5km</span></div>
+                <div class="sanpo-row"><span class="sanpo-label">難易度</span><span class="sanpo-val">★☆☆ 誰でも</span></div>
+              </div>
             </div>
+            <div class="sanpo-checklist">
+              <div class="sanpo-check-title">持ち物チェック</div>
+              <label class="sanpo-check"><input type="checkbox"><span>水分（500ml以上）</span></label>
+              <label class="sanpo-check"><input type="checkbox"><span>帽子</span></label>
+              <label class="sanpo-check"><input type="checkbox"><span>日焼け止め</span></label>
+              <label class="sanpo-check"><input type="checkbox"><span>歩きやすい靴</span></label>
+              <label class="sanpo-check"><input type="checkbox"><span>スマートフォン</span></label>
+              <label class="sanpo-check"><input type="checkbox"><span>財布・ICカード</span></label>
+            </div>
+            <a href="https://maps.google.com/?q=横浜市神奈川区白楽" class="map-card g-showa" target="_blank">
+              <div class="map-name">ルートマップ</div>
+              <div class="map-go">Google Maps →</div>
+            </a>
           </div>
-          <div class="sanpo-checklist">
-            <div class="sanpo-check-title">持ち物チェック</div>
-            <label class="sanpo-check"><input type="checkbox"><span>水分（500ml以上）</span></label>
-            <label class="sanpo-check"><input type="checkbox"><span>帽子</span></label>
-            <label class="sanpo-check"><input type="checkbox"><span>日焼け止め</span></label>
-            <label class="sanpo-check"><input type="checkbox"><span>歩きやすい靴</span></label>
-            <label class="sanpo-check"><input type="checkbox"><span>スマートフォン</span></label>
-            <label class="sanpo-check"><input type="checkbox"><span>財布・ICカード</span></label>
-          </div>
-          <a href="https://maps.google.com/?q=横浜市神奈川区白楽" class="map-card g-showa" target="_blank">
-            <div class="map-name">ルートマップ</div>
-            <div class="map-go">Google Maps →</div>
-          </a>
-        </div>
-      </section>
-
+        </section>
+      </div>
     </main>
 
     <footer>
@@ -160,24 +130,43 @@
   </div>
 
   <script>
-  /* ===== TIMETABLE ===== */
+  const MEMBERS = [
+    {name:'TOMSUCK', genre:'トランス', links:[
+      {label:'Instagram',url:'https://www.instagram.com/tomsuck_jp/'},
+      {label:'Twitter/X',url:'https://twitter.com/tomsuck'},
+      {label:'note',url:'https://note.com/tomsuck'},
+      {label:'hearthis.at',url:'https://hearthis.at/tomsuck/'},
+      {label:'lit.link',url:'https://lit.link/rArs48z21rVQPVhtu0LxdSOCQX72'}],
+      bio:'本籍はトランス、住所はサイケ、グルーヴはハウス、魂はテクノのレイヴ民。元ガバっ子。90年代テクノパーティー「X-TEND」主催。2023年にVRデビュー。'},
+    {name:'haraken', genre:'ヒップホップ', links:[{label:'Instagram',url:'https://www.instagram.com/musik_drunc/'}]},
+    {name:'ALKA', genre:'トランス', links:[{label:'Instagram',url:'https://www.instagram.com/alka611o/'}]},
+    {name:'あなるちゃん', genre:'アニメーション', links:[{label:'Instagram',url:'https://www.instagram.com/analchan/'}]},
+    {name:'オレンジさん', genre:'パンク', links:[{label:'Instagram',url:'https://www.instagram.com/orengechanwada/'}]},
+    {name:'ムッシュ', genre:'昭和歌謡', links:[{label:'Instagram',url:'https://www.instagram.com/bistro_la_zic.yokohama3/'}]},
+    {name:'おしゃれどろぼう', genre:'プログレ', links:[{label:'Instagram',url:'https://www.instagram.com/oshare.dorobous/'}]}
+  ];
   const TT_KEY = 'eejanaika_tt_v3';
   let ttData = { baseTime: '17:00', items: [] };
+  let mode = 'lp';
 
-  function hmToMin(hm) { const [h,m] = hm.split(':').map(Number); return h*60+m; }
+  function hmToMin(hm) { const [h,m]=hm.split(':').map(Number); return h*60+m; }
   function minToHm(min) { const h=Math.floor(min/60)%24, m=min%60; return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0'); }
   function addMin(hm,add) { return minToHm(hmToMin(hm)+add); }
   function genreClass(g) {
     const m={'トランス':'g-trance','プログレ':'g-prog','アニメーション':'g-anime','パンク':'g-punk','ヒップホップ':'g-hiphop','昭和歌謡':'g-showa','おしゃれ':'g-oshare'};
     return m[g]||'g-other';
   }
+  function findMember(name) {
+    return MEMBERS.find(m => m.name===name || name.includes(m.name));
+  }
+
   async function loadTT() {
     try { const r=await fetch('data/20260802.json'); const d=await r.json(); ttData={baseTime:d.baseTime,items:d.schedule}; } catch(e){}
     const raw=localStorage.getItem(TT_KEY);
     if (raw) ttData=JSON.parse(raw);
   }
-  function renderViewer() {
-    const el = document.getElementById('ttList');
+
+  function renderTT(el, endEl) {
     el.innerHTML = '';
     let cursor = ttData.baseTime;
     ttData.items.forEach((item,i) => {
@@ -186,21 +175,66 @@
       const gc = genreClass(item.genre);
       const st = cursor;
       const et = item.duration!=null ? addMin(st,item.duration) : '—';
+      const member = findMember(item.name);
+      const instagram = member ? member.links.find(l=>l.label==='Instagram') : null;
       li.innerHTML = '<div class="tl-dot '+gc+'"></div><div class="tl-conn"></div><div class="tl-card '+gc+'">'
         +'<div class="tl-time">'+st+' – '+et+'</div>'
         +'<div class="tl-name-view">'+item.name+'</div>'
         +'<div class="tl-genre '+gc+'">'+item.genre+'</div>'
         +'<div class="tl-dur"><span>'+(item.duration!=null?item.duration:'—')+'分</span></div>'
+        +(instagram?'<div class="tl-link"><a href="'+instagram.url+'" target="_blank">'+instagram.label+' →</a></div>':'')
         +'</div>';
       el.appendChild(li);
       if (item.duration!=null) cursor=addMin(cursor,item.duration);
     });
-    document.getElementById('ttEndTime').textContent = '終了 '+cursor;
+    endEl.textContent = '終了 '+cursor;
   }
 
+  function renderMemberStrip() {
+    const el = document.getElementById('memberStrip');
+    el.innerHTML = MEMBERS.map(m => {
+      const ig = m.links.find(l=>l.label==='Instagram');
+      return '<a href="'+ig.url+'" class="member-chip '+genreClass(m.genre)+'" target="_blank">'
+        +'<span class="chip-name">'+m.name+'</span>'
+        +'<span class="chip-genre">'+m.genre+'</span>'
+        +'</a>';
+    }).join('');
+  }
+
+  // ===== SPA ROUTER =====
+  const spaPages = ['top','flyer','timetable','members','sanpo'];
+  function spaNav(hash) {
+    const id = (hash||'top').replace('#','');
+    if (!spaPages.includes(id)) return;
+    document.querySelectorAll('#spa-mode .page').forEach(p => p.style.display='none');
+    const t = document.getElementById('page-'+id);
+    if (t) t.style.display='';
+    if (id==='timetable') renderTT(document.getElementById('ttListSpa'),document.getElementById('ttEndTimeSpa'));
+    if (id==='members') {
+      const g=document.getElementById('membersGrid');
+      g.innerHTML=MEMBERS.map(m=>'<div class="member-card"><h2>'+m.name+'</h2><div class="genre">'+m.genre+'</div>'
+        +m.links.map(l=>'<a href="'+l.url+'" target="_blank">'+l.label+'</a>').join('')
+        +(m.bio?'<div class="bio">'+m.bio+'</div>':'')+'</div>').join('');
+    }
+  }
+
+  // ===== MODE TOGGLE =====
+  function setMode(m) {
+    mode = m;
+    localStorage.setItem('eejanaika_mode', m);
+    document.getElementById('lp-mode').style.display = m==='lp' ? '' : 'none';
+    document.getElementById('spa-mode').style.display = m==='spa' ? '' : 'none';
+    document.getElementById('modeToggle').textContent = m==='lp' ? '⤡' : '⤢';
+    if (m==='lp') { renderTT(document.getElementById('ttList'),document.getElementById('ttEndTime')); renderMemberStrip(); }
+    if (m==='spa') spaNav(location.hash);
+  }
+  document.getElementById('modeToggle').addEventListener('click', () => setMode(mode==='lp'?'spa':'lp'));
+  window.addEventListener('hashchange', () => { if (mode==='spa') spaNav(location.hash); });
+
+  // ===== INIT =====
   (async () => {
     await loadTT();
-    renderViewer();
+    setMode(localStorage.getItem('eejanaika_mode') || 'lp');
   })();
   </script>
 </body>
