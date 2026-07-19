@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <title>ええじゃないか</title>
+  <title></title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,76 +14,48 @@
       <div class="header-inner">
         <button class="mode-toggle" id="modeToggle" title="LP/SPA切替">⤡</button>
         <div>
-          <div class="event-title">ええじゃないか</div>
-          <div class="event-date">2026/08/02 (日) 17:00 – 22:00</div>
+          <div class="event-title" id="headerTitle"></div>
+          <div class="event-date" id="headerDate"></div>
         </div>
       </div>
     </header>
 
     <main id="main">
-      <!-- ========== LP MODE ========== -->
-      <div id="lp-mode">
-        <!-- HERO: flyer + event info + map -->
+      <div id="lp-mode" class="lp">
         <section class="lp-hero">
-          <img class="hero-flyer" src="flyer1.png" alt="フライヤー">
-          <div class="hero-details">
-            <div class="event-info-main">
-              <h1>オールジャンルダンスパーティー</h1>
-              <p><strong>日時</strong> 2026年8月2日（日）17:00開始</p>
-              <p><strong>入場料</strong> ¥1,000（ドリンク別）</p>
-              <p><strong>会場</strong> CAFE doudou</p>
-              <p class="address">神奈川県横浜市神奈川区白楽100-11-103</p>
-              <p><strong>ジャンル</strong> トランス、パンク、ロック、ヒップホップ、ワールド、グルーブ歌謡、なんでもあり</p>
-            </div>
-            <a href="https://maps.google.com/?q=横浜市神奈川区白楽" class="map-card g-showa" target="_blank">
-              <div class="map-name">周辺地図</div>
-              <div class="map-go">Google Mapsで開く →</div>
-            </a>
+          <img class="hero-flyer" id="lpFlyer" alt="">
+        </section>
+        <section class="lp-section" id="lpCopy" style="display:none">
+          <div class="copy-card" id="lpCopyContent"></div>
+        </section>
+        <section class="lp-section">
+          <div class="section-title"><span class="section-marker g-anime"></span> イベント詳細</div>
+          <div class="detail-card" id="lpDetails"></div>
+        </section>
+        <section class="lp-section">
+          <div class="section-title"><span class="section-marker g-showa"></span> 周辺エリア</div>
+          <div class="area-card" id="lpArea"></div>
+        </section>
+        <section class="lp-section">
+          <div class="section-title"><span class="section-marker g-trance"></span> タイムテーブル</div>
+          <div class="tt-wrapper">
+            <ul id="ttList" class="tl-list"></ul>
+            <div class="tt-end" id="ttEndTime"></div>
           </div>
         </section>
-
-        <!-- TIMETABLE + MEMBER LINKS -->
-        <div class="section-title">
-          <span class="section-marker g-trance"></span> タイムテーブル
-        </div>
         <section class="lp-section">
-          <ul id="ttList" class="tl-list"></ul>
-          <div class="tt-end" id="ttEndTime"></div>
+          <div class="section-title"><span class="section-marker g-prog"></span> メンバーリンク</div>
           <div class="member-strip" id="memberStrip"></div>
         </section>
       </div>
 
-      <!-- ========== SPA MODE ========== -->
-      <div id="spa-mode" style="display:none">
+      <div id="spa-mode" style="display:none" class="spa">
         <section id="page-top" class="page">
-          <div class="nav-grid">
-            <a href="#flyer" class="nav-card g-anime"><div class="nav-icon">🎨</div><div class="nav-label">フライヤー</div></a>
-            <a href="#timetable" class="nav-card g-trance"><div class="nav-icon">⏱</div><div class="nav-label">タイムテーブル</div></a>
-            <a href="#members" class="nav-card g-prog"><div class="nav-icon">👥</div><div class="nav-label">メンバー</div></a>
-            <a href="#sanpo" class="nav-card g-showa"><div class="nav-icon">🚶</div><div class="nav-label">白楽散歩</div></a>
-          </div>
+          <div class="nav-grid" id="spaNavGrid"></div>
         </section>
         <section id="page-flyer" class="page" style="display:none">
-          <img class="flyer-img" src="flyer2.png" alt="フライヤー2">
-          <div class="flyer-info">
-            <h2>オールジャンルダンスパーティー</h2>
-            <div class="flyer-detail">
-              <strong>日時</strong> 2026年8月2日（日）17:00開始<br>
-              <strong>入場料</strong> ¥1,000（ドリンク別）<br>
-              <strong>会場</strong> CAFE doudou<br>
-              神奈川県横浜市神奈川区白楽100-11-103<br>
-              <strong>ジャンル</strong> トランス、パンク、ロック、<br>ヒップホップ、ワールド、グルーブ歌謡、<br>なんでもありのダンスパーティー
-            </div>
-            <div class="flyer-artists">
-              <span class="artist-tag">TOMSUCK</span>
-              <span class="artist-tag">あなるちゃん</span>
-              <span class="artist-tag">ALKA</span>
-              <span class="artist-tag">haraken</span>
-              <span class="artist-tag">オレンジさん</span>
-              <span class="artist-tag">ムッシュ</span>
-              <span class="artist-tag">おしゃれどろぼう</span>
-            </div>
-          </div>
+          <img class="flyer-img" id="spaFlyer" alt="">
+          <div class="flyer-info" id="spaFlyerInfo"></div>
         </section>
         <section id="page-timetable" class="page" style="display:none">
           <ul id="ttListSpa" class="tl-list"></ul>
@@ -93,77 +65,86 @@
           <div class="members-grid" id="membersGrid"></div>
         </section>
         <section id="page-sanpo" class="page" style="display:none">
-          <div class="sanpo-content">
-            <div class="sanpo-info">
-              <div class="sanpo-route">白楽駅 → まちだ図書館 → 広尾橋 → サイダーバー白楽</div>
-              <div class="sanpo-detail">
-                <div class="sanpo-row"><span class="sanpo-label">集合</span><span class="sanpo-val">16:00 白楽駅改札前</span></div>
-                <div class="sanpo-row"><span class="sanpo-label">出発</span><span class="sanpo-val">16:05</span></div>
-                <div class="sanpo-row"><span class="sanpo-label">到着</span><span class="sanpo-val">17:00 サイダーバー白楽</span></div>
-                <div class="sanpo-row"><span class="sanpo-label">距離</span><span class="sanpo-val">約2.5km</span></div>
-                <div class="sanpo-row"><span class="sanpo-label">難易度</span><span class="sanpo-val">★☆☆ 誰でも</span></div>
-              </div>
-            </div>
-            <div class="sanpo-checklist">
-              <div class="sanpo-check-title">持ち物チェック</div>
-              <label class="sanpo-check"><input type="checkbox"><span>水分（500ml以上）</span></label>
-              <label class="sanpo-check"><input type="checkbox"><span>帽子</span></label>
-              <label class="sanpo-check"><input type="checkbox"><span>日焼け止め</span></label>
-              <label class="sanpo-check"><input type="checkbox"><span>歩きやすい靴</span></label>
-              <label class="sanpo-check"><input type="checkbox"><span>スマートフォン</span></label>
-              <label class="sanpo-check"><input type="checkbox"><span>財布・ICカード</span></label>
-            </div>
-            <a href="https://maps.google.com/?q=横浜市神奈川区白楽" class="map-card g-showa" target="_blank">
-              <div class="map-name">ルートマップ</div>
-              <div class="map-go">Google Maps →</div>
-            </a>
-          </div>
+          <div class="sanpo-content" id="spaSanpo"></div>
         </section>
       </div>
     </main>
 
     <footer>
-      <div class="footer-row">
-        <div class="end">ええじゃないか 2026</div>
-      </div>
+      <div class="footer-row"><div class="end" id="footerTitle"></div></div>
     </footer>
   </div>
 
   <script>
-  const MEMBERS = [
-    {name:'TOMSUCK', genre:'トランス', links:[
-      {label:'Instagram',url:'https://www.instagram.com/tomsuck_jp/'},
-      {label:'Twitter/X',url:'https://twitter.com/tomsuck'},
-      {label:'note',url:'https://note.com/tomsuck'},
-      {label:'hearthis.at',url:'https://hearthis.at/tomsuck/'},
-      {label:'lit.link',url:'https://lit.link/rArs48z21rVQPVhtu0LxdSOCQX72'}],
-      bio:'本籍はトランス、住所はサイケ、グルーヴはハウス、魂はテクノのレイヴ民。元ガバっ子。90年代テクノパーティー「X-TEND」主催。2023年にVRデビュー。'},
-    {name:'haraken', genre:'ヒップホップ', links:[{label:'Instagram',url:'https://www.instagram.com/musik_drunc/'}]},
-    {name:'ALKA', genre:'トランス', links:[{label:'Instagram',url:'https://www.instagram.com/alka611o/'}]},
-    {name:'あなるちゃん', genre:'アニメーション', links:[{label:'Instagram',url:'https://www.instagram.com/analchan/'}]},
-    {name:'オレンジさん', genre:'パンク', links:[{label:'Instagram',url:'https://www.instagram.com/orengechanwada/'}]},
-    {name:'ムッシュ', genre:'昭和歌謡', links:[{label:'Instagram',url:'https://www.instagram.com/bistro_la_zic.yokohama3/'}]},
-    {name:'おしゃれどろぼう', genre:'プログレ', links:[{label:'Instagram',url:'https://www.instagram.com/oshare.dorobous/'}]}
-  ];
+  'use strict';
   const TT_KEY = 'eejanaika_tt_v3';
+  let ev = null;
   let ttData = { baseTime: '17:00', items: [] };
   let mode = 'lp';
+
+  const gcCache = {};
+  function gc(g) {
+    if (!gcCache[g] && ev && ev.genres) {
+      const found = ev.genres.find(x => typeof x === 'object' ? x.name === g : x === g);
+      gcCache[g] = (typeof found === 'object' ? found.color : 'g-other') || 'g-other';
+    }
+    return gcCache[g] || 'g-other';
+  }
 
   function hmToMin(hm) { const [h,m]=hm.split(':').map(Number); return h*60+m; }
   function minToHm(min) { const h=Math.floor(min/60)%24, m=min%60; return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0'); }
   function addMin(hm,add) { return minToHm(hmToMin(hm)+add); }
-  function genreClass(g) {
-    const m={'トランス':'g-trance','プログレ':'g-prog','アニメーション':'g-anime','パンク':'g-punk','ヒップホップ':'g-hiphop','昭和歌謡':'g-showa','おしゃれ':'g-oshare'};
-    return m[g]||'g-other';
-  }
-  function findMember(name) {
-    return MEMBERS.find(m => m.name===name || name.includes(m.name));
+
+  async function loadAll() {
+    const [er, tr] = await Promise.all([
+      fetch('data/event.json').then(r=>r.json()),
+      fetch('data/20260802.json').then(r=>r.json()).catch(()=>({}))
+    ]);
+    ev = er;
+    ttData = { baseTime: tr.baseTime || '17:00', items: tr.schedule || [] };
+    const raw = localStorage.getItem(TT_KEY);
+    if (raw) ttData = JSON.parse(raw);
   }
 
-  async function loadTT() {
-    try { const r=await fetch('data/20260802.json'); const d=await r.json(); ttData={baseTime:d.baseTime,items:d.schedule}; } catch(e){}
-    const raw=localStorage.getItem(TT_KEY);
-    if (raw) ttData=JSON.parse(raw);
+  function render() {
+    document.title = ev.title;
+    document.getElementById('headerTitle').textContent = ev.title;
+    document.getElementById('headerDate').textContent = ev.date + ' ' + ev.timeStart + ' – ' + ev.timeEnd;
+    document.getElementById('footerTitle').textContent = ev.title + ' 2026';
+    document.getElementById('lpFlyer').src = ev.flyer;
+    document.getElementById('lpFlyer').alt = ev.title;
+
+    const cc = document.getElementById('lpCopy');
+    if (ev.copy && ev.copy.length) {
+      cc.style.display = '';
+      let inEm = false;
+      document.getElementById('lpCopyContent').innerHTML = ev.copy.map(line =>
+        !line ? (inEm = !inEm, '<div class="copy-divider"></div>')
+              : '<div class="copy-line' + (inEm ? ' copy-em' : '') + '">' + line + '</div>'
+      ).join('');
+    }
+
+    const genres = (ev.genres || []).map(g => {
+      const name = typeof g === 'object' ? g.name : g;
+      return '<span class="genre-badge ' + gc(name) + '">' + name + '</span>';
+    }).join('');
+    document.getElementById('lpDetails').innerHTML =
+      '<div class="detail-row"><span class="detail-label">日時</span><span class="detail-value">' + ev.date + ' ' + ev.timeStart + ' – ' + ev.timeEnd + '</span></div>'
+      + '<div class="detail-row"><span class="detail-label">料金</span><span class="detail-value">' + ev.fee + '</span></div>'
+      + '<div class="detail-row"><span class="detail-label">会場</span><span class="detail-value">' + ev.venue
+      + '<br><span class="detail-sub">' + ev.address + '</span>'
+      + '<br><span class="detail-sub" style="color:var(--g-trance);font-weight:600">' + ev.walkTime + '</span></span></div>'
+      + '<div class="detail-row"><span class="detail-label">ジャンル</span><span class="detail-value">' + genres + '</span></div>'
+      + '<div class="detail-row"><span class="detail-label">DJ</span><span class="detail-value">' + ev.members.map(m=>m.name).join(' / ') + '</span></div>'
+      + (ev.note ? '<div class="detail-note">' + ev.note + '</div>' : '');
+
+    const spots = (ev.area.spots || []).map(s => '<div class="spot">' + s.icon + ' ' + s.name + '</div>').join('');
+    document.getElementById('lpArea').innerHTML =
+      '<div class="area-info"><div class="area-name">' + ev.area.name + '</div>'
+      + '<div class="area-desc">' + ev.area.desc.replace(/\n/g, '<br>') + '</div>'
+      + '<div class="area-spots">' + spots + '</div></div>'
+      + '<a href="' + ev.mapUrl + '" class="area-map-link" target="_blank">'
+      + '<div class="area-map-icon">🗺</div><div class="area-map-label">Google Maps で見る</div><div class="area-map-arrow">→</div></a>';
   }
 
   function renderTT(el, endEl) {
@@ -172,36 +153,93 @@
     ttData.items.forEach((item,i) => {
       const li = document.createElement('li');
       li.className = 'tl-item ' + (i%2===0?'left':'right');
-      const gc = genreClass(item.genre);
       const st = cursor;
-      const et = item.duration!=null ? addMin(st,item.duration) : '—';
-      const member = findMember(item.name);
-      const instagram = member ? member.links.find(l=>l.label==='Instagram') : null;
-      li.innerHTML = '<div class="tl-dot '+gc+'"></div><div class="tl-conn"></div><div class="tl-card '+gc+'">'
-        +'<div class="tl-time">'+st+' – '+et+'</div>'
-        +'<div class="tl-name-view">'+item.name+'</div>'
-        +'<div class="tl-genre '+gc+'">'+item.genre+'</div>'
-        +'<div class="tl-dur"><span>'+(item.duration!=null?item.duration:'—')+'分</span></div>'
-        +(instagram?'<div class="tl-link"><a href="'+instagram.url+'" target="_blank">'+instagram.label+' →</a></div>':'')
-        +'</div>';
+      const et = item.duration != null ? addMin(st, item.duration) : '—';
+      const member = (ev.members || []).find(m => m.name === item.name || item.name.includes(m.name));
+      const linksHtml = member ? member.links.map(l =>
+        '<a href="' + l.url + '" class="tl-link" target="_blank">' + l.label + ' →</a>'
+      ).join('') : '';
+      li.innerHTML = '<div class="tl-dot ' + gc(item.genre) + '"></div><div class="tl-conn"></div>'
+        + '<div class="tl-card ' + gc(item.genre) + '">'
+        + '<div class="tl-time">' + st + ' – ' + et + '</div>'
+        + '<div class="tl-name-view">' + item.name + '</div>'
+        + '<div class="tl-genre ' + gc(item.genre) + '">' + item.genre + '</div>'
+        + '<div class="tl-dur"><span>' + (item.duration != null ? item.duration : '—') + '分</span></div>'
+        + linksHtml + '</div>';
       el.appendChild(li);
-      if (item.duration!=null) cursor=addMin(cursor,item.duration);
+      if (item.duration != null) cursor = addMin(cursor, item.duration);
     });
-    endEl.textContent = '終了 '+cursor;
+    endEl.textContent = '終了 ' + cursor;
   }
 
   function renderMemberStrip() {
     const el = document.getElementById('memberStrip');
-    el.innerHTML = MEMBERS.map(m => {
-      const ig = m.links.find(l=>l.label==='Instagram');
-      return '<a href="'+ig.url+'" class="member-chip '+genreClass(m.genre)+'" target="_blank">'
-        +'<span class="chip-name">'+m.name+'</span>'
-        +'<span class="chip-genre">'+m.genre+'</span>'
-        +'</a>';
+    el.innerHTML = (ev.members || []).map(m => {
+      const primary = m.links && m.links[0];
+      return '<a href="' + (primary ? primary.url : '#') + '" class="member-chip ' + gc(m.genre) + '" target="_blank">'
+        + '<span class="chip-name">' + m.name + '</span>'
+        + '<span class="chip-genre">' + m.genre + '</span></a>';
     }).join('');
   }
 
-  // ===== SPA ROUTER =====
+  function renderSpaFlyer() {
+    document.getElementById('spaFlyer').src = ev.flyerAlt || ev.flyer;
+    document.getElementById('spaFlyer').alt = ev.title;
+    document.getElementById('spaFlyerInfo').innerHTML =
+      '<h2>' + ev.title + '</h2>'
+      + '<div class="flyer-detail">'
+      + '<strong>日時</strong> ' + ev.date + ' ' + ev.timeStart + '–' + ev.timeEnd + '<br>'
+      + '<strong>料金</strong> ' + ev.fee + '<br>'
+      + '<strong>会場</strong> ' + ev.venue + '<br>' + ev.address + '<br>'
+      + '<strong>ジャンル</strong> ' + (ev.genres || []).map(g => typeof g === 'object' ? g.name : g).join(' / ')
+      + '</div>'
+      + '<div class="flyer-artists">'
+      + (ev.members || []).map(m => '<span class="artist-tag">' + m.name + '</span>').join('') + '</div>';
+  }
+
+  function renderSpaNavGrid() {
+    const pages = [
+      {id:'flyer', icon:'🎨', label:'フライヤー', color:'g-anime'},
+      {id:'timetable', icon:'⏱', label:'タイムテーブル', color:'g-trance'},
+      {id:'members', icon:'👥', label:'メンバー', color:'g-prog'},
+      {id:'sanpo', icon:'🚶', label:'白楽散歩', color:'g-showa'}
+    ];
+    document.getElementById('spaNavGrid').innerHTML = pages.map(p =>
+      '<a href="#' + p.id + '" class="nav-card ' + p.color + '">'
+      + '<div class="nav-icon">' + p.icon + '</div>'
+      + '<div class="nav-label">' + p.label + '</div></a>'
+    ).join('');
+  }
+
+  function renderSpaSanpo() {
+    const s = ev.sanpo;
+    document.getElementById('spaSanpo').innerHTML =
+      '<div class="sanpo-info">'
+      + '<div class="sanpo-route">' + s.route + '</div>'
+      + '<div class="sanpo-detail">'
+      + '<div class="sanpo-row"><span class="sanpo-label">集合</span><span class="sanpo-val">' + s.meeting + '</span></div>'
+      + '<div class="sanpo-row"><span class="sanpo-label">出発</span><span class="sanpo-val">' + s.departure + '</span></div>'
+      + '<div class="sanpo-row"><span class="sanpo-label">到着</span><span class="sanpo-val">' + s.arrival + '</span></div>'
+      + '<div class="sanpo-row"><span class="sanpo-label">距離</span><span class="sanpo-val">' + s.distance + '</span></div>'
+      + '<div class="sanpo-row"><span class="sanpo-label">難易度</span><span class="sanpo-val">' + s.difficulty + '</span></div>'
+      + '</div></div>'
+      + '<div class="sanpo-checklist"><div class="sanpo-check-title">持ち物チェック</div>'
+      + (s.checklist || []).map(c =>
+        '<label class="sanpo-check"><input type="checkbox"><span>' + c + '</span></label>'
+      ).join('') + '</div>'
+      + '<a href="' + ev.mapUrl + '" class="map-card g-showa" target="_blank">'
+      + '<div class="map-name">ルートマップ</div><div class="map-go">Google Maps →</div></a>';
+  }
+
+  function renderSpaMembers() {
+    document.getElementById('membersGrid').innerHTML = (ev.members || []).map(m =>
+      '<div class="member-card"><h2>' + m.name + '</h2>'
+      + '<div class="genre">' + m.genre + '</div>'
+      + m.links.map(l => '<a href="' + l.url + '" target="_blank">' + l.label + '</a>').join('')
+      + (m.bio ? '<div class="bio">' + m.bio + '</div>' : '') + '</div>'
+    ).join('');
+  }
+
   const spaPages = ['top','flyer','timetable','members','sanpo'];
   function spaNav(hash) {
     const id = (hash||'top').replace('#','');
@@ -209,31 +247,25 @@
     document.querySelectorAll('#spa-mode .page').forEach(p => p.style.display='none');
     const t = document.getElementById('page-'+id);
     if (t) t.style.display='';
-    if (id==='timetable') renderTT(document.getElementById('ttListSpa'),document.getElementById('ttEndTimeSpa'));
-    if (id==='members') {
-      const g=document.getElementById('membersGrid');
-      g.innerHTML=MEMBERS.map(m=>'<div class="member-card"><h2>'+m.name+'</h2><div class="genre">'+m.genre+'</div>'
-        +m.links.map(l=>'<a href="'+l.url+'" target="_blank">'+l.label+'</a>').join('')
-        +(m.bio?'<div class="bio">'+m.bio+'</div>':'')+'</div>').join('');
-    }
+    if (id==='timetable') renderTT(document.getElementById('ttListSpa'), document.getElementById('ttEndTimeSpa'));
+    if (id==='members') renderSpaMembers();
   }
 
-  // ===== MODE TOGGLE =====
   function setMode(m) {
     mode = m;
     localStorage.setItem('eejanaika_mode', m);
     document.getElementById('lp-mode').style.display = m==='lp' ? '' : 'none';
     document.getElementById('spa-mode').style.display = m==='spa' ? '' : 'none';
     document.getElementById('modeToggle').textContent = m==='lp' ? '⤡' : '⤢';
-    if (m==='lp') { renderTT(document.getElementById('ttList'),document.getElementById('ttEndTime')); renderMemberStrip(); }
-    if (m==='spa') spaNav(location.hash);
+    if (m==='lp') { renderTT(document.getElementById('ttList'), document.getElementById('ttEndTime')); renderMemberStrip(); }
+    if (m==='spa') { renderSpaNavGrid(); renderSpaFlyer(); renderSpaSanpo(); spaNav(location.hash); }
   }
   document.getElementById('modeToggle').addEventListener('click', () => setMode(mode==='lp'?'spa':'lp'));
   window.addEventListener('hashchange', () => { if (mode==='spa') spaNav(location.hash); });
 
-  // ===== INIT =====
   (async () => {
-    await loadTT();
+    await loadAll();
+    render();
     setMode(localStorage.getItem('eejanaika_mode') || 'lp');
   })();
   </script>
