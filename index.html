@@ -7,83 +7,42 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <title>ええじゃないか</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js" defer></script>
 </head>
 <body>
   <div class="app">
     <header>
-      <div class="event-banner" id="headerBanner">
-        <a href="#top" class="back-btn" id="backBtn" style="display:none">&larr;</a>
-        <div class="event-title" id="headerTitle">ええじゃないか</div>
-        <div class="event-date" id="headerDate">2026/08/02</div>
+      <div class="event-banner">
+        <div class="event-title">ええじゃないか</div>
+        <div class="event-date">2026/08/02 (日) 17:00 – 22:00</div>
       </div>
     </header>
 
-    <main id="main">
-
-      <!-- ========== TOP ========== -->
-      <section id="page-top" class="page">
-        <img class="flyer-img" src="flyer1.png" alt="フライヤー">
+    <main>
+      <!-- ===== HERO ===== -->
+      <section class="lp-hero">
+        <img class="hero-flyer" src="flyer1.png" alt="フライヤー">
         <div class="event-info-main">
           <h1>オールジャンルダンスパーティー</h1>
           <p><strong>日時</strong> 2026年8月2日（日）17:00開始</p>
-          <p><strong>入場料</strong> ¥1,000</p>
+          <p><strong>入場料</strong> ¥1,000（ドリンク別）</p>
           <p><strong>会場</strong> CAFE doudou</p>
           <p class="address">神奈川県横浜市神奈川区白楽100-11-103</p>
           <p><strong>ジャンル</strong> トランス、パンク、ロック、ヒップホップ、ワールド、グルーブ歌謡、なんでもありのダンスパーティー</p>
         </div>
-        <div class="section-title">メインコンテンツ</div>
-        <div class="index-grid">
-          <a href="#flyer" class="index-card g-anime">
-            <div class="index-icon">🎨</div>
-            <div class="index-label">フライヤー</div>
-            <div class="index-sub">ダンスパーティー情報</div>
-          </a>
-          <a href="#members" class="index-card g-trance">
-            <div class="index-icon">👥</div>
-            <div class="index-label">メンバー</div>
-            <div class="index-sub">7名のDJ紹介</div>
-          </a>
-          <a href="#timetable" class="index-card g-prog">
-            <div class="index-icon">⏱</div>
-            <div class="index-label">タイムテーブル</div>
-            <div class="index-sub">スケジュール確認</div>
-          </a>
-          <a href="#editor" class="index-card g-punk">
-            <div class="index-icon">✏️</div>
-            <div class="index-label">エディタ</div>
-            <div class="index-sub">タイムテーブル編集</div>
-          </a>
-        </div>
-        <div class="section-title">イベント准备</div>
-        <div class="index-grid">
-          <a href="#sanpo" class="index-card g-showa">
-            <div class="index-icon">🚶</div>
-            <div class="index-label">白楽散歩</div>
-            <div class="index-sub">16:00 – 17:00</div>
-          </a>
-          <a href="#equipment" class="index-card g-hiphop">
-            <div class="index-icon">🎛</div>
-            <div class="index-label">機材リスト</div>
-            <div class="index-sub">全店舗の機材</div>
-          </a>
-          <a href="#maps" class="index-card g-showa">
-            <div class="index-icon">📍</div>
-            <div class="index-label">店舗マップ</div>
-            <div class="index-sub">5会場の地図</div>
-          </a>
-        </div>
       </section>
 
-      <!-- ========== FLYER ========== -->
-      <section id="page-flyer" class="page" style="display:none">
+      <!-- ===== FLYER DETAIL ===== -->
+      <div class="section-title">
+        <span class="section-marker g-anime"></span> フライヤー
+      </div>
+      <section class="lp-section">
         <div class="flyer-page">
           <img class="flyer-img" src="flyer2.png" alt="フライヤー2">
           <div class="flyer-info">
             <h2>オールジャンルダンスパーティー</h2>
             <div class="flyer-detail">
               <strong>日時</strong> 2026年8月2日（日）17:00開始<br>
-              <strong>入場料</strong> ¥1,000<br>
+              <strong>入場料</strong> ¥1,000（ドリンク別）<br>
               <strong>会場</strong> CAFE doudou<br>
               神奈川県横浜市神奈川区白楽100-11-103<br>
               <strong>ジャンル</strong> トランス、パンク、ロック、<br>ヒップホップ、ワールド、グルーブ歌謡、<br>なんでもありのダンスパーティー
@@ -101,11 +60,23 @@
         </div>
       </section>
 
-      <!-- ========== MEMBERS ========== -->
-      <section id="page-members" class="page" style="display:none">
+      <!-- ===== TIMETABLE ===== -->
+      <div class="section-title">
+        <span class="section-marker g-trance"></span> タイムテーブル
+      </div>
+      <section class="lp-section" id="section-timetable">
+        <ul id="ttList" class="tl-list"></ul>
+        <div class="tt-end" id="ttEndTime"></div>
+      </section>
+
+      <!-- ===== MEMBERS ===== -->
+      <div class="section-title">
+        <span class="section-marker g-prog"></span> メンバー
+      </div>
+      <section class="lp-section" id="section-members">
         <div class="members-grid">
           <div class="member-card">
-            <h2>トムサック (TOMSUCK)</h2>
+            <h2>TOMSUCK</h2>
             <div class="genre">トランス</div>
             <a href="https://www.instagram.com/tomsuck_jp/" target="_blank">Instagram: @tomsuck_jp</a>
             <a href="https://twitter.com/tomsuck" target="_blank">Twitter/X: @tomsuck</a>
@@ -115,12 +86,12 @@
             <div class="bio">本籍はトランス、住所はサイケ、グルーヴはハウス、魂はテクノのレイヴ民。元ガバっ子。90年代テクノパーティー「X-TEND」主催。2023年にVRデビュー。</div>
           </div>
           <div class="member-card">
-            <h2>はらけん (haraken)</h2>
+            <h2>haraken</h2>
             <div class="genre">ヒップホップ</div>
             <a href="https://www.instagram.com/musik_drunc/" target="_blank">Instagram: @musik_drunc</a>
           </div>
           <div class="member-card">
-            <h2>アルカ (ALKA)</h2>
+            <h2>ALKA</h2>
             <div class="genre">トランス</div>
             <a href="https://www.instagram.com/alka611o/" target="_blank">Instagram: @alka611o</a>
           </div>
@@ -147,23 +118,11 @@
         </div>
       </section>
 
-      <!-- ========== TIMETABLE VIEWER ========== -->
-      <section id="page-timetable" class="page" style="display:none">
-        <ul id="ttList" class="tl-list"></ul>
-        <div class="tt-end" id="ttEndTime"></div>
-      </section>
-
-      <!-- ========== TIMETABLE EDITOR ========== -->
-      <section id="page-editor" class="page" style="display:none">
-        <ul id="edList" class="tl-list"></ul>
-        <div class="tt-footer">
-          <div class="tt-end">終了 <span id="edEndTime">--:--</span></div>
-          <button id="edAddBtn" class="add-btn">＋</button>
-        </div>
-      </section>
-
-      <!-- ========== SANPO ========== -->
-      <section id="page-sanpo" class="page" style="display:none">
+      <!-- ===== SANPO ===== -->
+      <div class="section-title">
+        <span class="section-marker g-showa"></span> 白楽散歩
+      </div>
+      <section class="lp-section">
         <div class="sanpo-content">
           <div class="sanpo-info">
             <div class="sanpo-route">白楽駅 → まちだ図書館 → 広尾橋 → サイダーバー白楽</div>
@@ -191,84 +150,17 @@
         </div>
       </section>
 
-      <!-- ========== EQUIPMENT ========== -->
-      <section id="page-equipment" class="page" style="display:none">
-        <div id="equipmentList"></div>
-      </section>
-
-      <!-- ========== MAPS ========== -->
-      <section id="page-maps" class="page" style="display:none">
-        <div class="map-list">
-          <a href="https://maps.google.com/?q=渋谷+ライブハウス" class="map-card g-trance" target="_blank">
-            <div class="map-name">渋谷</div>
-            <div class="map-addr">東京都渋谷区円山町5-1</div>
-            <div class="map-go">Google Maps →</div>
-          </a>
-          <a href="https://maps.google.com/?q=新宿+ライブハウス" class="map-card g-anime" target="_blank">
-            <div class="map-name">新宿</div>
-            <div class="map-addr">東京都新宿区歌舞伎町1-2</div>
-            <div class="map-go">Google Maps →</div>
-          </a>
-          <a href="https://maps.google.com/?q=中目黒+ライブハウス" class="map-card g-hiphop" target="_blank">
-            <div class="map-name">中目黒</div>
-            <div class="map-addr">東京都目黒区中目黒1-3</div>
-            <div class="map-go">Google Maps →</div>
-          </a>
-          <a href="https://maps.google.com/?q=下北沢+ライブハウス" class="map-card g-showa" target="_blank">
-            <div class="map-name">下北沢</div>
-            <div class="map-addr">東京都世田谷区北沢2-4</div>
-            <div class="map-go">Google Maps →</div>
-          </a>
-          <a href="https://maps.google.com/?q=吉祥寺+ライブハウス" class="map-card g-punk" target="_blank">
-            <div class="map-name">吉祥寺</div>
-            <div class="map-addr">東京都武蔵野市吉祥寺本町1-5</div>
-            <div class="map-go">Google Maps →</div>
-          </a>
-        </div>
-      </section>
-
     </main>
 
     <footer>
-      <div class="footer-row" id="footerRow">
-        <div class="end"><span>17:00 – 22:00</span></div>
+      <div class="footer-row">
+        <div class="end">ええじゃないか 2026</div>
       </div>
     </footer>
   </div>
 
   <script>
-  /* ===== ROUTER ===== */
-  const pages = ['top','flyer','members','timetable','editor','sanpo','equipment','maps'];
-  const headerConfig = {
-    top:         { title: 'ええじゃないか', date: '2026/08/02', back: false },
-    flyer:       { title: 'フライヤー', date: '2026/08/02', back: true },
-    members:     { title: 'メンバー', date: '7名のDJ', back: true },
-    timetable:   { title: 'タイムテーブル', date: 'ビューア', back: true },
-    editor:      { title: 'タイムテーブル', date: 'エディタ', back: true },
-    sanpo:       { title: '白楽散歩', date: '16:00 – 17:00', back: true },
-    equipment:   { title: '機材リスト', date: '全店舗', back: true },
-    maps:        { title: '店舗マップ', date: '5会場', back: true },
-  };
-
-  function navigate(hash) {
-    const id = (hash || 'top').replace('#','');
-    if (!pages.includes(id)) return location.hash = '#top';
-    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-    const target = document.getElementById('page-' + id);
-    if (target) target.style.display = '';
-    const hc = headerConfig[id];
-    document.getElementById('headerTitle').textContent = hc.title;
-    document.getElementById('headerDate').textContent = hc.date;
-    document.getElementById('backBtn').style.display = hc.back ? '' : 'none';
-    document.getElementById('main').scrollTop = 0;
-    if (id === 'timetable') renderViewer();
-    if (id === 'editor') renderEditor();
-    if (id === 'equipment') renderEquipment();
-  }
-  window.addEventListener('hashchange', () => navigate(location.hash));
-  document.getElementById('backBtn').addEventListener('click', e => { e.preventDefault(); location.hash = '#top'; });
-
-  /* ===== TIMETABLE DATA ===== */
+  /* ===== TIMETABLE ===== */
   const TT_KEY = 'eejanaika_tt_v3';
   let ttData = { baseTime: '17:00', items: [] };
 
@@ -280,20 +172,17 @@
     return m[g]||'g-other';
   }
   async function loadTT() {
-    try { const r=await fetch('timetable/timetable.json'); ttData=await r.json(); } catch(e){}
+    try { const r=await fetch('data/20260802.json'); const d=await r.json(); ttData={baseTime:d.baseTime,items:d.schedule}; } catch(e){}
     const raw=localStorage.getItem(TT_KEY);
     if (raw) ttData=JSON.parse(raw);
   }
-  function saveTT() { localStorage.setItem(TT_KEY, JSON.stringify(ttData)); }
-
-  /* ===== VIEWER ===== */
   function renderViewer() {
     const el = document.getElementById('ttList');
     el.innerHTML = '';
     let cursor = ttData.baseTime;
-    ttData.items.forEach(item => {
+    ttData.items.forEach((item,i) => {
       const li = document.createElement('li');
-      li.className = 'tl-item ' + (item.idx%2===0?'left':'right');
+      li.className = 'tl-item ' + (i%2===0?'left':'right');
       const gc = genreClass(item.genre);
       const st = cursor;
       const et = item.duration!=null ? addMin(st,item.duration) : '—';
@@ -305,97 +194,13 @@
         +'</div>';
       el.appendChild(li);
       if (item.duration!=null) cursor=addMin(cursor,item.duration);
-      item.idx = (item.idx||0)+1;
     });
     document.getElementById('ttEndTime').textContent = '終了 '+cursor;
   }
 
-  /* ===== EDITOR ===== */
-  let edSortable;
-  function renderEditor() {
-    const el = document.getElementById('edList');
-    el.innerHTML = '';
-    let cursor = ttData.baseTime;
-    ttData.items.forEach((item,idx) => {
-      const side = idx%2===0?'left':'right';
-      const gc = genreClass(item.genre);
-      const st = cursor;
-      const et = item.duration!=null?addMin(st,item.duration):'—';
-      const li = document.createElement('li');
-      li.className = 'tl-item '+side+' '+gc;
-      li.innerHTML = '<div class="tl-dot '+gc+'"></div><div class="tl-conn"></div><div class="tl-card">'
-        +'<div class="tl-time">'+st+' – '+et+'</div>'
-        +'<input class="tl-name" type="text" value="'+item.name+'" spellcheck="false">'
-        +'<div class="tl-dur"><input type="number" value="'+(item.duration!=null?item.duration:'')+'" min="0"><span>分</span></div>'
-        +'<button class="tl-del">&times;</button>'
-        +'</div>';
-      el.appendChild(li);
-      const nameInp = li.querySelector('.tl-name');
-      nameInp.addEventListener('change', () => { ttData.items[idx].name=nameInp.value||'無名'; saveTT(); renderEditor(); });
-      const durInp = li.querySelector('.tl-dur input');
-      durInp.addEventListener('change', () => { const v=durInp.value.trim(); ttData.items[idx].duration=v===''?null:Math.max(0,parseInt(v,10)||0); saveTT(); renderEditor(); });
-      li.querySelector('.tl-del').addEventListener('click', () => { ttData.items.splice(idx,1); saveTT(); renderEditor(); });
-      if (item.duration!=null) cursor=addMin(cursor,item.duration);
-    });
-    document.getElementById('edEndTime').textContent = cursor;
-    if (edSortable) edSortable.destroy();
-    edSortable = new Sortable(el, {
-      handle:'.tl-card', animation:120, delay:100, delayOnTouchOnly:true,
-      ghostClass:'tl-ghost', dragClass:'tl-drag',
-      onEnd:evt => { if(evt.oldIndex===evt.newIndex)return; const [m]=ttData.items.splice(evt.oldIndex,1); ttData.items.splice(evt.newIndex,0,m); saveTT(); renderEditor(); }
-    });
-  }
-  document.getElementById('edAddBtn').addEventListener('click', () => {
-    ttData.items.push({name:'新規',duration:45,genre:''}); saveTT(); renderEditor();
-  });
-
-  /* ===== EQUIPMENT ===== */
-  let eqLoaded = false;
-  async function renderEquipment() {
-    if (eqLoaded) return;
-    try {
-      const res = await fetch('equipment.json');
-      const data = await res.json();
-      const list = document.getElementById('equipmentList');
-      data.stores.forEach(store => {
-        const sec = document.createElement('div');
-        sec.className = 'store-section';
-        sec.innerHTML = '<div class="store-header">'+store.name+'</div>';
-        const grid = document.createElement('div');
-        grid.className = 'equip-grid';
-        const cats = [
-          {key:'dj',label:'DJ',cls:'g-trance',items:store.equipment.dj},
-          {key:'speaker',label:'スピーカー',cls:'g-anime',items:store.equipment.speaker},
-          {key:'projector',label:'プロジェクター',cls:'g-hiphop',items:store.equipment.projector},
-          {key:'lighting',label:'照明',cls:'g-showa',items:store.equipment.lighting},
-          {key:'other',label:'その他',cls:'g-other',items:store.equipment.other}
-        ];
-        cats.forEach(cat => {
-          if(!cat.items) return;
-          const card = document.createElement('div');
-          card.className = 'equip-card '+cat.cls;
-          card.innerHTML = '<div class="equip-cat">'+cat.label+'</div>';
-          if(cat.key==='projector') {
-            const p=cat.items;
-            card.innerHTML += p.available
-              ? '<div class="equip-row"><span class="equip-val">'+p.model+'</span></div>'+(p.screen?'<div class="equip-row"><span class="equip-val sub">'+p.screen+'</span></div>':'')
-              : '<div class="equip-row"><span class="equip-val dim">なし</span></div>';
-          } else {
-            Object.entries(cat.items).forEach(([k,v]) => { if(v===null)return; card.innerHTML+='<div class="equip-row"><span class="equip-key">'+k+'</span><span class="equip-val">'+v+'</span></div>'; });
-          }
-          grid.appendChild(card);
-        });
-        sec.appendChild(grid);
-        list.appendChild(sec);
-      });
-      eqLoaded = true;
-    } catch(e) { document.getElementById('equipmentList').innerHTML='<p style="padding:2rem;text-align:center;color:#666">読み込み中...</p>'; }
-  }
-
-  /* ===== INIT ===== */
   (async () => {
     await loadTT();
-    navigate(location.hash);
+    renderViewer();
   })();
   </script>
 </body>
