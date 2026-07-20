@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="loader" id="loader"><div class="loader-spin"></div></div>
   <div class="app">
     <header>
       <div class="header-inner">
@@ -25,16 +26,15 @@
         <section class="lp-hero">
           <img class="hero-flyer" id="lpFlyer" alt="">
         </section>
+        <section class="lp-section lp-toptitle">
+          <div class="top-title" id="lpTopTitle">ええじゃないか４</div>
+        </section>
         <section class="lp-section" id="lpCopy" style="display:none">
           <div class="copy-card" id="lpCopyContent"></div>
         </section>
         <section class="lp-section">
           <div class="section-title"><span class="section-marker g-anime"></span> イベント詳細</div>
           <div class="detail-card" id="lpDetails"></div>
-        </section>
-        <section class="lp-section">
-          <div class="section-title"><span class="section-marker g-showa"></span> 周辺エリア</div>
-          <div class="area-card" id="lpArea"></div>
         </section>
         <section class="lp-section">
           <div class="section-title"><span class="section-marker g-trance"></span> タイムテーブル</div>
@@ -46,6 +46,20 @@
         <section class="lp-section">
           <div class="section-title"><span class="section-marker g-prog"></span> メンバーリンク</div>
           <div class="member-strip" id="memberStrip"></div>
+        </section>
+        <section class="lp-section">
+          <div class="section-title"><span class="section-marker g-city"></span> SNS用テキスト（コピペOK）</div>
+          <div class="sns-card">
+            <textarea id="snsText" class="sns-textarea" readonly rows="20"></textarea>
+            <button type="button" id="snsCopyBtn" class="sns-copy-btn">コピーする</button>
+          </div>
+        </section>
+        <section class="lp-section">
+          <div class="section-title"><span class="section-marker g-anime"></span> フライヤー（もう一枚）</div>
+          <img class="hero-flyer" id="lpFlyer2" alt="">
+        </section>
+        <section class="lp-section" style="text-align:center">
+          <a href="hakuraku.html" class="hk-back" style="font-size:0.95rem; padding:3% 6%">🚶 白楽散歩を見る</a>
         </section>
       </div>
 
@@ -75,199 +89,6 @@
     </footer>
   </div>
 
-  <script>
-  'use strict';
-  const TT_KEY = 'eejanaika_tt_v3';
-  let ev = null;
-  let ttData = { baseTime: '17:00', items: [] };
-  let mode = 'lp';
-
-  const gcCache = {};
-  function gc(g) {
-    if (!gcCache[g] && ev && ev.genres) {
-      const found = ev.genres.find(x => typeof x === 'object' ? x.name === g : x === g);
-      gcCache[g] = (typeof found === 'object' ? found.color : 'g-other') || 'g-other';
-    }
-    return gcCache[g] || 'g-other';
-  }
-
-  function hmToMin(hm) { const [h,m]=hm.split(':').map(Number); return h*60+m; }
-  function minToHm(min) { const h=Math.floor(min/60)%24, m=min%60; return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0'); }
-  function addMin(hm,add) { return minToHm(hmToMin(hm)+add); }
-
-  async function loadAll() {
-    const [er, tr] = await Promise.all([
-      fetch('data/event.json').then(r=>r.json()),
-      fetch('data/20260802.json').then(r=>r.json()).catch(()=>({}))
-    ]);
-    ev = er;
-    ttData = { baseTime: tr.baseTime || '17:00', items: tr.schedule || [] };
-    const raw = localStorage.getItem(TT_KEY);
-    if (raw) ttData = JSON.parse(raw);
-  }
-
-  function render() {
-    document.title = ev.title;
-    document.getElementById('headerTitle').textContent = ev.title;
-    document.getElementById('headerDate').textContent = ev.date + ' ' + ev.timeStart + ' – ' + ev.timeEnd;
-    document.getElementById('footerTitle').textContent = ev.title + ' 2026';
-    document.getElementById('lpFlyer').src = ev.flyer;
-    document.getElementById('lpFlyer').alt = ev.title;
-
-    const cc = document.getElementById('lpCopy');
-    if (ev.copy && ev.copy.length) {
-      cc.style.display = '';
-      let inEm = false;
-      document.getElementById('lpCopyContent').innerHTML = ev.copy.map(line =>
-        !line ? (inEm = !inEm, '<div class="copy-divider"></div>')
-              : '<div class="copy-line' + (inEm ? ' copy-em' : '') + '">' + line + '</div>'
-      ).join('');
-    }
-
-    const genres = (ev.genres || []).map(g => {
-      const name = typeof g === 'object' ? g.name : g;
-      return '<span class="genre-badge ' + gc(name) + '">' + name + '</span>';
-    }).join('');
-    document.getElementById('lpDetails').innerHTML =
-      '<div class="detail-row"><span class="detail-label">日時</span><span class="detail-value">' + ev.date + ' ' + ev.timeStart + ' – ' + ev.timeEnd + '</span></div>'
-      + '<div class="detail-row"><span class="detail-label">料金</span><span class="detail-value">' + ev.fee + '</span></div>'
-      + '<div class="detail-row"><span class="detail-label">会場</span><span class="detail-value">' + ev.venue
-      + '<br><span class="detail-sub">' + ev.address + '</span>'
-      + '<br><span class="detail-sub" style="color:var(--g-trance);font-weight:600">' + ev.walkTime + '</span></span></div>'
-      + '<div class="detail-row"><span class="detail-label">ジャンル</span><span class="detail-value">' + genres + '</span></div>'
-      + '<div class="detail-row"><span class="detail-label">DJ</span><span class="detail-value">' + ev.members.map(m=>m.name).join(' / ') + '</span></div>'
-      + (ev.note ? '<div class="detail-note">' + ev.note + '</div>' : '');
-
-    const spots = (ev.area.spots || []).map(s => '<div class="spot">' + s.icon + ' ' + s.name + '</div>').join('');
-    document.getElementById('lpArea').innerHTML =
-      '<div class="area-info"><div class="area-name">' + ev.area.name + '</div>'
-      + '<div class="area-desc">' + ev.area.desc.replace(/\n/g, '<br>') + '</div>'
-      + '<div class="area-spots">' + spots + '</div></div>'
-      + '<a href="' + ev.mapUrl + '" class="area-map-link" target="_blank">'
-      + '<div class="area-map-icon">🗺</div><div class="area-map-label">Google Maps で見る</div><div class="area-map-arrow">→</div></a>';
-  }
-
-  function renderTT(el, endEl) {
-    el.innerHTML = '';
-    let cursor = ttData.baseTime;
-    ttData.items.forEach((item,i) => {
-      const li = document.createElement('li');
-      li.className = 'tl-item ' + (i%2===0?'left':'right');
-      const st = cursor;
-      const et = item.duration != null ? addMin(st, item.duration) : '—';
-      const member = (ev.members || []).find(m => m.name === item.name || item.name.includes(m.name));
-      const linksHtml = member ? member.links.map(l =>
-        '<a href="' + l.url + '" class="tl-link" target="_blank">' + l.label + ' →</a>'
-      ).join('') : '';
-      li.innerHTML = '<div class="tl-dot ' + gc(item.genre) + '"></div><div class="tl-conn"></div>'
-        + '<div class="tl-card ' + gc(item.genre) + '">'
-        + '<div class="tl-time">' + st + ' – ' + et + '</div>'
-        + '<div class="tl-name-view">' + item.name + '</div>'
-        + '<div class="tl-genre ' + gc(item.genre) + '">' + item.genre + '</div>'
-        + '<div class="tl-dur"><span>' + (item.duration != null ? item.duration : '—') + '分</span></div>'
-        + linksHtml + '</div>';
-      el.appendChild(li);
-      if (item.duration != null) cursor = addMin(cursor, item.duration);
-    });
-    endEl.textContent = '終了 ' + cursor;
-  }
-
-  function renderMemberStrip() {
-    const el = document.getElementById('memberStrip');
-    el.innerHTML = (ev.members || []).map(m => {
-      const primary = m.links && m.links[0];
-      return '<a href="' + (primary ? primary.url : '#') + '" class="member-chip ' + gc(m.genre) + '" target="_blank">'
-        + '<span class="chip-name">' + m.name + '</span>'
-        + '<span class="chip-genre">' + m.genre + '</span></a>';
-    }).join('');
-  }
-
-  function renderSpaFlyer() {
-    document.getElementById('spaFlyer').src = ev.flyerAlt || ev.flyer;
-    document.getElementById('spaFlyer').alt = ev.title;
-    document.getElementById('spaFlyerInfo').innerHTML =
-      '<h2>' + ev.title + '</h2>'
-      + '<div class="flyer-detail">'
-      + '<strong>日時</strong> ' + ev.date + ' ' + ev.timeStart + '–' + ev.timeEnd + '<br>'
-      + '<strong>料金</strong> ' + ev.fee + '<br>'
-      + '<strong>会場</strong> ' + ev.venue + '<br>' + ev.address + '<br>'
-      + '<strong>ジャンル</strong> ' + (ev.genres || []).map(g => typeof g === 'object' ? g.name : g).join(' / ')
-      + '</div>'
-      + '<div class="flyer-artists">'
-      + (ev.members || []).map(m => '<span class="artist-tag">' + m.name + '</span>').join('') + '</div>';
-  }
-
-  function renderSpaNavGrid() {
-    const pages = [
-      {id:'flyer', icon:'🎨', label:'フライヤー', color:'g-anime'},
-      {id:'timetable', icon:'⏱', label:'タイムテーブル', color:'g-trance'},
-      {id:'members', icon:'👥', label:'メンバー', color:'g-prog'},
-      {id:'sanpo', icon:'🚶', label:'白楽散歩', color:'g-showa'}
-    ];
-    document.getElementById('spaNavGrid').innerHTML = pages.map(p =>
-      '<a href="#' + p.id + '" class="nav-card ' + p.color + '">'
-      + '<div class="nav-icon">' + p.icon + '</div>'
-      + '<div class="nav-label">' + p.label + '</div></a>'
-    ).join('');
-  }
-
-  function renderSpaSanpo() {
-    const s = ev.sanpo;
-    document.getElementById('spaSanpo').innerHTML =
-      '<div class="sanpo-info">'
-      + '<div class="sanpo-route">' + s.route + '</div>'
-      + '<div class="sanpo-detail">'
-      + '<div class="sanpo-row"><span class="sanpo-label">集合</span><span class="sanpo-val">' + s.meeting + '</span></div>'
-      + '<div class="sanpo-row"><span class="sanpo-label">出発</span><span class="sanpo-val">' + s.departure + '</span></div>'
-      + '<div class="sanpo-row"><span class="sanpo-label">到着</span><span class="sanpo-val">' + s.arrival + '</span></div>'
-      + '<div class="sanpo-row"><span class="sanpo-label">距離</span><span class="sanpo-val">' + s.distance + '</span></div>'
-      + '<div class="sanpo-row"><span class="sanpo-label">難易度</span><span class="sanpo-val">' + s.difficulty + '</span></div>'
-      + '</div></div>'
-      + '<div class="sanpo-checklist"><div class="sanpo-check-title">持ち物チェック</div>'
-      + (s.checklist || []).map(c =>
-        '<label class="sanpo-check"><input type="checkbox"><span>' + c + '</span></label>'
-      ).join('') + '</div>'
-      + '<a href="' + ev.mapUrl + '" class="map-card g-showa" target="_blank">'
-      + '<div class="map-name">ルートマップ</div><div class="map-go">Google Maps →</div></a>';
-  }
-
-  function renderSpaMembers() {
-    document.getElementById('membersGrid').innerHTML = (ev.members || []).map(m =>
-      '<div class="member-card"><h2>' + m.name + '</h2>'
-      + '<div class="genre">' + m.genre + '</div>'
-      + m.links.map(l => '<a href="' + l.url + '" target="_blank">' + l.label + '</a>').join('')
-      + (m.bio ? '<div class="bio">' + m.bio + '</div>' : '') + '</div>'
-    ).join('');
-  }
-
-  const spaPages = ['top','flyer','timetable','members','sanpo'];
-  function spaNav(hash) {
-    const id = (hash||'top').replace('#','');
-    if (!spaPages.includes(id)) return;
-    document.querySelectorAll('#spa-mode .page').forEach(p => p.style.display='none');
-    const t = document.getElementById('page-'+id);
-    if (t) t.style.display='';
-    if (id==='timetable') renderTT(document.getElementById('ttListSpa'), document.getElementById('ttEndTimeSpa'));
-    if (id==='members') renderSpaMembers();
-  }
-
-  function setMode(m) {
-    mode = m;
-    localStorage.setItem('eejanaika_mode', m);
-    document.getElementById('lp-mode').style.display = m==='lp' ? '' : 'none';
-    document.getElementById('spa-mode').style.display = m==='spa' ? '' : 'none';
-    document.getElementById('modeToggle').textContent = m==='lp' ? '⤡' : '⤢';
-    if (m==='lp') { renderTT(document.getElementById('ttList'), document.getElementById('ttEndTime')); renderMemberStrip(); }
-    if (m==='spa') { renderSpaNavGrid(); renderSpaFlyer(); renderSpaSanpo(); spaNav(location.hash); }
-  }
-  document.getElementById('modeToggle').addEventListener('click', () => setMode(mode==='lp'?'spa':'lp'));
-  window.addEventListener('hashchange', () => { if (mode==='spa') spaNav(location.hash); });
-
-  (async () => {
-    await loadAll();
-    render();
-    setMode(localStorage.getItem('eejanaika_mode') || 'lp');
-  })();
-  </script>
+  <script src="app.js" defer></script>
 </body>
 </html>

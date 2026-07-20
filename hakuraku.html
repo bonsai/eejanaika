@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>白楽散歩</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="loader" id="loader"><div class="loader-spin"></div></div>
+  <div class="app">
+    <header>
+      <div class="header-inner">
+        <div>
+          <div class="event-title" id="hkTitle">白楽散歩</div>
+          <div class="event-date" id="hkSub"></div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hk-section">
+        <div class="section-title"><span class="section-marker g-showa"></span> 散歩コース</div>
+        <div class="sanpo-info">
+          <div class="sanpo-route" id="hkRoute"></div>
+          <div class="sanpo-detail" id="hkMeta"></div>
+        </div>
+        <div class="sanpo-note">集合やガイドはありません。イベント前後に各自で歩いてみてください。</div>
+      </section>
+
+      <section class="hk-section">
+        <div class="section-title"><span class="section-marker g-anime"></span> 会場・駅情報</div>
+        <div class="detail-card" id="hkVenue"></div>
+      </section>
+
+      <section class="hk-section">
+        <div class="section-title"><span class="section-marker g-trance"></span> 白楽ってどんなとこ？</div>
+        <div class="area-card">
+          <div class="area-info">
+            <div class="area-name" id="hkAreaName"></div>
+            <div class="area-desc" id="hkAreaDesc"></div>
+            <div class="area-spots" id="hkAreaSpots"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="hk-section">
+        <div class="section-title"><span class="section-marker g-prog"></span> 音楽好きが立ち寄りたい白楽・六角橋</div>
+        <div class="rec-list" id="hkSpots"></div>
+      </section>
+
+      <section class="hk-section" style="text-align:center">
+        <a href="index.html" class="hk-back">← イベント詳細へ戻る</a>
+      </section>
+    </main>
+
+    <footer>
+      <div class="end" id="hkFooter"></div>
+    </footer>
+  </div>
+
+  <script src="hakuraku.js" defer></script>
+</body>
+</html>

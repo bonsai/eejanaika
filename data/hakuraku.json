@@ -1,0 +1,77 @@
+{
+  "title": "白楽散歩",
+  "desc": "イベント前後に各自で歩ける白楽・六角橋の散歩コース。集合やガイドはなし、自分のペースで。",
+  "route": "白楽駅 → 白楽銀座商店街 → まちだ図書館 → 広尾橋 → サイダーバー白楽",
+  "distance": "約2.5km",
+  "difficulty": "★☆☆ 誰でも",
+  "venue": {
+    "name": "Cafe doudou（フーウンカオルジョー2号店）",
+    "address": "神奈川県横浜市神奈川区白楽100-11-103",
+    "walkTime": "白楽駅から徒歩１分",
+    "accessFromShibuya": "渋谷 →東急東横線→ 白楽 約25分 徒歩1分",
+    "map": "https://maps.google.com/?q=横浜市神奈川区白楽"
+  },
+  "area": {
+    "name": "白楽（はくら）",
+    "desc": "東横線の各停だけ停まる穴場駅。昔ながらの商店街が残る下町エリア。\n駅前の白楽銀座商店街を抜けると、綱島街道沿いに会場のCAFE doudou。\n途中にまちだ図書館や広尾橋があり、散歩にぴったりのルートです。",
+    "spots": [
+      {"icon":"🍜","name":"白楽銀座商店街"},
+      {"icon":"📚","name":"まちだ図書館"},
+      {"icon":"🌉","name":"広尾橋"},
+      {"icon":"☕","name":"サイダーバー白楽"}
+    ]
+  },
+  "spots": [
+    {
+      "icon": "🎷",
+      "name": "Jazz D-Room",
+      "genre": "ジャズバー / レコード",
+      "desc": "白楽駅西口すぐ、ビル3階の隠れ家ジャズバー。2000枚のレコードを真空管アンプ（Luxman/DENON）で。1977年製Steinwayも。金土 19:30–23:00。",
+      "ig": "https://www.instagram.com/jazz_d_room/",
+      "map": "https://maps.google.com/?q=Jazz+D-Room+白楽"
+    },
+    {
+      "icon": "🍺",
+      "name": "Hakuraku Mökki",
+      "genre": "クラフトビアバー",
+      "desc": "白楽のクラフトビアバー。多種のクラフトビールと音楽のある空間。イベント後の一杯に。",
+      "ig": "https://www.instagram.com/hakuraku_mokki/",
+      "map": "https://maps.google.com/?q=Hakuraku+Mökki+白楽"
+    },
+    {
+      "icon": "🍶",
+      "name": "大衆酒場トヨサト",
+      "genre": "大衆酒場",
+      "desc": "「おじさんのたまり場」を目指す白楽の大衆酒場。イベント前後の一杯に。",
+      "map": "https://maps.google.com/?q=大衆酒場トヨサト+白楽"
+    },
+    {
+      "icon": "🍢",
+      "name": "尾張家",
+      "genre": "おでん",
+      "desc": "昔ながらの味が残る白楽の老舗。街歩きの締めに。",
+      "map": "https://maps.google.com/?q=尾張家+白楽"
+    },
+    {
+      "icon": "🍗",
+      "name": "焼き鳥 三五八",
+      "genre": "焼き鳥",
+      "desc": "六角橋のメニューがない焼き鳥店。横浜開港祭グルメ王獲得の実力派。",
+      "map": "https://maps.google.com/?q=焼き鳥+三五八+六角橋"
+    },
+    {
+      "icon": "♨️",
+      "name": "親松の湯",
+      "genre": "銭湯",
+      "desc": "六角橋のまちに寄り添う昔ながらの銭湯。踊ったあとのひとっ風呂に。",
+      "map": "https://maps.google.com/?q=親松の湯+六角橋"
+    },
+    {
+      "icon": "🛍",
+      "name": "六角橋商店街",
+      "genre": "商店街",
+      "desc": "ヤミ市でも知られるレトロなアーケード商店街。散策とディグに最適。",
+      "map": "https://maps.google.com/?q=六角橋商店街"
+    }
+  ]
+}

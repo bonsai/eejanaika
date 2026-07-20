@@ -21,6 +21,7 @@
   "venue": "Cafe doudou（フーウンカオルジョー2号店）",
   "address": "神奈川県横浜市神奈川区白楽100-11-103",
   "walkTime": "白楽駅から徒歩１分",
+  "accessFromShibuya": "渋谷 →東急東横線→ 白楽 約25分 徒歩1分",
   "fee": "¥1,000（ドリンク別）",
   "note": "時間あれば飛び入りDJ可能！",
   "genres": [
@@ -32,41 +33,32 @@
     {"name":"なんでもあり","color":"g-oshare"}
   ],
   "mapUrl": "https://maps.google.com/?q=横浜市神奈川区白楽",
-  "area": {
-    "name": "白楽（はくら）",
-    "desc": "東横線の各停だけ停まる穴場駅。昔ながらの商店街が残る下町エリア。\n駅前の白楽銀座商店街を抜けると、綱島街道沿いに会場のCAFE doudou。\n途中にまちだ図書館や広尾橋があり、散歩にぴったりのルートです。",
-    "spots": [
-      {"icon":"🍜","name":"白楽銀座商店街"},
-      {"icon":"📚","name":"まちだ図書館"},
-      {"icon":"🌉","name":"広尾橋"},
-      {"icon":"☕","name":"サイダーバー白楽"}
-    ]
-  },
   "sanpo": {
-    "route": "白楽駅 → まちだ図書館 → 広尾橋 → サイダーバー白楽",
-    "meeting": "16:00 白楽駅改札前",
-    "departure": "16:05",
-    "arrival": "17:00 サイダーバー白楽",
+    "title": "白楽散歩",
+    "desc": "イベント前後に各自で歩ける白楽・六角橋の散歩コース。集合やガイドはなし、自分のペースで。",
+    "route": "白楽駅 → 白楽銀座商店街 → まちだ図書館 → 広尾橋 → サイダーバー白楽",
     "distance": "約2.5km",
     "difficulty": "★☆☆ 誰でも",
-    "checklist": ["水分（500ml以上）","帽子","日焼け止め","歩きやすい靴","スマートフォン","財布・ICカード"]
+    "venue": {
+      "name": "Cafe doudou（フーウンカオルジョー2号店）",
+      "address": "神奈川県横浜市神奈川区白楽100-11-103",
+      "walkTime": "白楽駅から徒歩１分",
+      "accessFromShibuya": "渋谷 →東急東横線→ 白楽 約25分 徒歩1分",
+      "map": "https://maps.google.com/?q=横浜市神奈川区白楽"
+    }
   },
   "members": [
     {
       "name": "TOMSUCK",
-      "genre": "トランス",
+      "genre": "テクノハウス",
       "links": [
-        {"label":"Instagram","url":"https://www.instagram.com/tomsuck_jp/"},
-        {"label":"Twitter/X","url":"https://twitter.com/tomsuck"},
-        {"label":"note","url":"https://note.com/tomsuck"},
-        {"label":"hearthis.at","url":"https://hearthis.at/tomsuck/"},
-        {"label":"lit.link","url":"https://lit.link/rArs48z21rVQPVhtu0LxdSOCQX72"}
+        {"label":"Instagram","url":"https://www.instagram.com/tomsuck_jp/"}
       ],
       "bio": "本籍はトランス、住所はサイケ、グルーヴはハウス、魂はテクノのレイヴ民。元ガバっ子。90年代テクノパーティー「X-TEND」主催。2023年にVRデビュー。"
     },
     {
       "name": "ALKA",
-      "genre": "トランス",
+      "genre": "トランス＆TarotReading",
       "links": [{"label":"Instagram","url":"https://www.instagram.com/alka611o/"}]
     },
     {
@@ -97,7 +89,7 @@
     {
       "name": "犬八朗",
       "genre": "シティポップ",
-      "links": [{"label":"Instagram","url":"https://www.instagram.com/inuhachiro/"}]
+      "links": []
     }
   ]
 }
